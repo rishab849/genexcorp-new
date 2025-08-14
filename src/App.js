@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import OurObjective from './OurObjective';
 import { Button } from "./components/ui/button";
 import {
   ArrowRight,
@@ -16,9 +18,9 @@ import {
   Globe,
 } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import { useState, useEffect } from "react";
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home'); // Add state for navigation
   const [currentSlide, setCurrentSlide] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
@@ -68,7 +70,6 @@ export default function App() {
     setCurrentSlide(0);
   };
 
-  // Handle scroll position and document dimensions
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -76,123 +77,121 @@ export default function App() {
       setDocumentHeight(document.documentElement.scrollHeight);
     };
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call to set dimensions
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Calculate max scroll position to keep icons visible until the end
   const maxScroll = documentHeight - windowHeight;
   const translateY = Math.min(scrollPosition * 0.5, maxScroll);
 
+  // If on objective page, render OurObjective
+  if (currentPage === 'objective') {
+    return <OurObjective onNavigate={setCurrentPage} />;
+  }
+
+  // Original HomePage content
   return (
     <div className="min-h-screen bg-white flex flex-col relative">
-      {/* Header */}
-      <header className="flex items-center justify-between px-8 py-6 relative z-50 max-w-7xl mx-auto w-full">
-        {/* Logo */}
-        <button
-          onClick={handleLogoClick}
-          className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded-lg p-2 -m-2"
-        >
-          <ImageWithFallback
-            src="/genexcorp-logo.png"
-            alt="GenexCorp Logo"
+      {/* Header with full-width background */}
+      <header className="w-full bg-slate-50 border-b border-gray-200 px-8 py-6 relative z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <button
             onClick={handleLogoClick}
-            className="h-12 w-auto cursor-pointer outline-none focus:outline-none border-none"
-          />
-          <div className="text-red-400 uppercase tracking-wider text-sm leading-tight">
-            GENEXCORP
-            <br />
-            CORPORATE
-            <br />
-            SERVICES PVT LTD
-          </div>
-        </button>
-
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm text-gray-500">
-          {/* Home dropdown */}
-          <div className="relative group flex items-center space-x-1 text-red-500 cursor-pointer">
-            <span>01 - Home</span>
-            <ChevronDown className="h-3 w-3" />
-            <div className="absolute left-0 top-full mt-2 w-48 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-red-50 hover:text-red-500"
-              >
-                Our Objective
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-red-50 hover:text-red-500"
-              >
-                Portfolio
-              </a>
+            className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded-lg p-2 -m-2"
+          >
+            <ImageWithFallback
+              src="/genexcorp-logo.png"
+              alt="GenexCorp Logo"
+              onClick={handleLogoClick}
+              className="h-12 w-auto cursor-pointer outline-none focus:outline-none border-none"
+            />
+            <div className="text-red-400 uppercase tracking-wider text-sm leading-tight">
+              GENEXCORP
+              <br />
+              CORPORATE
+              <br />
+              SERVICES PVT LTD
             </div>
-          </div>
+          </button>
 
-          {/* Services dropdown */}
-          <div className="relative group flex items-center space-x-1 hover:text-red-500 cursor-pointer">
-            <span>02 - Services</span>
-            <ChevronDown className="h-3 w-3" />
-            <div className="absolute left-0 top-full mt-2 w-56 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
-              <a
-                href="#"
-                className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
-              >
-                Product Development
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
-              >
-                IT Consulting
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 hover:bg-red-50 hover:text-red-500"
-              >
-                IT Resourcing
-              </a>
+          <nav className="hidden md:flex items-center space-x-8 text-sm text-gray-500">
+            <div className="relative group flex items-center space-x-1 text-red-500 cursor-pointer">
+              <span>Home</span>
+              <ChevronDown className="h-3 w-3" />
+              <div className="absolute left-0 top-full mt-2 w-48 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
+                <button
+                  onClick={() => setCurrentPage('objective')} // Updated link
+                  className="block px-4 py-2 hover:bg-red-50 hover:text-red-500"
+                >
+                  Our Objective
+                </button>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-red-50 hover:text-red-500"
+                >
+                  Portfolio
+                </a>
+              </div>
             </div>
-          </div>
-
-          {/* Training dropdown */}
-          <div className="relative group flex items-center space-x-1 hover:text-red-500 cursor-pointer">
-            <span>03 - Training</span>
-            <ChevronDown className="h-3 w-3" />
-            <div className="absolute left-0 top-full mt-2 w-56 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
-              <a
-                href="#"
-                className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
-              >
-                Training / Internships
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
-              >
-                Real Time Internships
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 hover:bg-red-50 hover:text-red-500"
-              >
-                Corporate Training
-              </a>
+            <div className="relative group flex items-center space-x-1 hover:text-red-500 cursor-pointer">
+              <span>Services</span>
+              <ChevronDown className="h-3 w-3" />
+              <div className="absolute left-0 top-full mt-2 w-56 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
+                <a
+                  href="#"
+                  className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
+                >
+                  Product Development
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
+                >
+                  IT Consulting
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-3 hover:bg-red-50 hover:text-red-500"
+                >
+                  IT Resourcing
+                </a>
+              </div>
             </div>
-          </div>
-
-          <a href="#" className="hover:text-red-500">
-            04 - Jobs
-          </a>
-          <a href="#" className="hover:text-red-500">
-            05 - Support
-          </a>
-        </nav>
+            <div className="relative group flex items-center space-x-1 hover:text-red-500 cursor-pointer">
+              <span>Training</span>
+              <ChevronDown className="h-3 w-3" />
+              <div className="absolute left-0 top-full mt-2 w-56 bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50">
+                <a
+                  href="#"
+                  className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
+                >
+                  Training / Internships
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-3 border-b hover:bg-red-50 hover:text-red-500"
+                >
+                  Real Time Internships
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-3 hover:bg-red-50 hover:text-red-500"
+                >
+                  Corporate Training
+                </a>
+              </div>
+            </div>
+            <a href="#" className="hover:text-red-500">
+              Jobs
+            </a>
+            <a href="#" className="hover:text-red-500">
+              Support
+            </a>
+          </nav>
+        </div>
       </header>
 
       <main className="flex flex-1 relative">
-        {/* Main Content */}
         <div className="flex-1 flex flex-col items-center px-8 py-16">
           <div className="max-w-7xl w-full text-center">
             <h1 className="text-6xl leading-tight text-gray-800 mb-6">
@@ -205,7 +204,6 @@ export default function App() {
               Everyone that is part of Genexcorp is passionate about how IT can
               help transform your business...
             </p>
-
             <div className="flex items-center justify-center space-x-8 mb-16">
               <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md">
                 Get Started
@@ -224,19 +222,19 @@ export default function App() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentSlide ? "opacity-100" : "opacity-0"
-                    }`}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
                   >
                     <ImageWithFallback
                       src={slide.image}
                       alt={`Corporate slide ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/70"></div>
-                    <div className="absolute inset-0 flex items-center justify-center text-white px-8 max-w-4xl text-center">
-                      <h2 className="text-4xl mb-6">{slide.title}</h2>
-                      <p className="text-xl text-gray-300">{slide.subtitle}</p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-800/60"></div>
+                    <div className="absolute top-4 left-4">
+                      <h2 className="text-4xl font-bold text-white max-w-md">{slide.title}</h2>
+                    </div>
+                    <div className="absolute top-1/2 transform -translate-y-1/2 left-1/2 transform -translate-x-1/2">
+                      <p className="text-xl text-gray-300 max-w-md text-center">{slide.subtitle}</p>
                     </div>
                   </div>
                 ))}
@@ -257,16 +255,13 @@ export default function App() {
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full ${
-                        index === currentSlide ? "bg-red-500" : "bg-white/50"
-                      }`}
+                      className={`w-3 h-3 rounded-full ${index === currentSlide ? "bg-red-500" : "bg-white/50"}`}
                     ></button>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Services Grid */}
             <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
               <div className="bg-gray-50 p-6 rounded-lg text-left">
                 <h3 className="text-xl mb-4 text-gray-800">Services</h3>
@@ -309,29 +304,38 @@ export default function App() {
               </div>
             </div>
 
-            {/* Key Highlights */}
-            <div className="bg-white border-l-4 border-red-500 pl-6 text-left max-w-4xl mx-auto">
-              <h3 className="text-2xl mb-4 text-gray-800">Why Choose GenexCorp?</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• Complete ETL tool with proprietary database capabilities</li>
-                <li>• Role-based and AD-based security</li>
-                <li>• Data compression to save resources</li>
-                <li>• Complete analysis across systems</li>
-                <li>• Embedded mapping objects for visualization</li>
-              </ul>
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
+                <h3 className="text-2xl mb-4 text-gray-800">Why Choose GenexCorp?</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Complete ETL tool with proprietary database capabilities</li>
+                  <li>• Role-based and AD-based security</li>
+                  <li>• Data compression to save resources</li>
+                  <li>• Complete analysis across systems</li>
+                  <li>• Embedded mapping objects for visualization</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-lg text-left">
+                <h3 className="text-2xl mb-4 text-gray-800">Our Achievements</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• Successfully trained over 500 professionals in BI analytics</li>
+                  <li>• Delivered 100+ IT consulting projects with 95% client satisfaction</li>
+                  <li>• Reduced data processing time by 40% for 20+ enterprises</li>
+                  <li>• Recognized as a top innovator by Tech Insights 2024</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Right-side Social Icons with Full Scroll */}
         <div
           className="flex flex-col items-center space-y-6 bg-red-500 p-6 rounded-lg shadow-lg z-50"
           style={{
             position: "fixed",
-          top: "50%",
-          right: "20px",
-          transform: "translateY(-50%)", // keeps it centered vertically
-            }}
+            top: "50%",
+            right: "20px",
+            transform: "translateY(-50%)",
+          }}
         >
           <a href="#" className="text-white hover:text-red-100">
             <Facebook className="h-5 w-5" />
@@ -348,7 +352,6 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-slate-50 text-gray-800 mt-8 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-8 py-8 grid md:grid-cols-3 gap-8 items-start">
           <div>
