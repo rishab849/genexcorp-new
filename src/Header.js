@@ -7,7 +7,11 @@ import {
 } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 
-export default function Header({ onNavigate, handleLogoClick }) {
+export default function Header({ onNavigate, handleLogoClick, currentPage }) {
+  // Define which pages belong to each dropdown
+  const isHomeActive = ['home', 'objective', 'portfolio'].includes(currentPage);
+  const isServicesActive = ['productdevelopment', 'itconsulting', 'itresourcing'].includes(currentPage);
+
   return (
     <header className="w-full bg-slate-50 border-b border-gray-200 px-8 py-6 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -33,7 +37,7 @@ export default function Header({ onNavigate, handleLogoClick }) {
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-8 text-sm text-gray-500">
           {/* Home with dropdown */}
-          <div className="relative group flex items-center space-x-1 text-red-500 cursor-pointer">
+          <div className={`relative group flex items-center space-x-1 ${isHomeActive ? 'text-red-500' : 'hover:text-red-500'} transition-colors cursor-pointer`}>
             <span>Home</span>
             <ChevronDown className="h-3 w-3" />
             {/* Dropdown Menu */}
@@ -54,7 +58,7 @@ export default function Header({ onNavigate, handleLogoClick }) {
           </div>
 
           {/* Services with dropdown */}
-          <div className="relative group flex items-center space-x-1 hover:text-red-500 transition-colors cursor-pointer">
+          <div className={`relative group flex items-center space-x-1 ${isServicesActive ? 'text-red-500' : 'hover:text-red-500'} transition-colors cursor-pointer`}>
             <span>Services</span>
             <ChevronDown className="h-3 w-3" />
             {/* Services Dropdown Menu */}
