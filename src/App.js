@@ -21,6 +21,7 @@ import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import Portfolio from './Portfolio';
 import ProductDevelopment from './ProductDevelopment';
 import ITConsulting from './ITConsulting';
+import ITResourcing from './ITResourcing';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -102,6 +103,9 @@ export default function App() {
       break;
     case 'itconsulting':
       content = <ITConsulting />;
+      break;
+    case 'itresourcing':
+      content = <ITResourcing />;
       break;
     default:
       content = (

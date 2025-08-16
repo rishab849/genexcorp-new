@@ -71,12 +71,12 @@ export default function Header({ onNavigate, handleLogoClick }) {
               >
                 IT Consulting
               </button>
-              <a
-                href="#"
+              <button
+                onClick={() => onNavigate('itresourcing')}
                 className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors"
               >
                 IT Resourcing
-              </a>
+              </button>
             </div>
           </div>
 
