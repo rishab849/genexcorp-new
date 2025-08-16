@@ -18,6 +18,7 @@ import {
   Globe,
 } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
+import Portfolio from './Portfolio';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home'); // Add state for navigation
@@ -88,6 +89,9 @@ export default function App() {
   if (currentPage === 'objective') {
     return <OurObjective onNavigate={setCurrentPage} />;
   }
+  if (currentPage === 'portfolio') {
+    return <Portfolio onNavigate={setCurrentPage} />;
+  }
 
   // Original HomePage content
   return (
@@ -125,12 +129,13 @@ export default function App() {
                 >
                   Our Objective
                 </button>
-                <a
-                  href="#"
+                <button
+                  onClick={() => setCurrentPage('portfolio')} // Updated link
                   className="block px-4 py-2 hover:bg-red-50 hover:text-red-500"
                 >
                   Portfolio
-                </a>
+                </button>
+                
               </div>
             </div>
             <div className="relative group flex items-center space-x-1 hover:text-red-500 cursor-pointer">

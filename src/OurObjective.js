@@ -29,7 +29,8 @@ export default function OurObjective({ onNavigate }) {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between px-8 py-6 relative z-50 max-w-7xl mx-auto w-full">
+      <header className="w-full bg-slate-50 border-b border-gray-200 px-8 py-6 relative z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <button 
           onClick={handleLogoClick}
@@ -63,12 +64,12 @@ export default function OurObjective({ onNavigate }) {
               >
                 Our Objective
               </button>
-              <a
-                href="#"
+              <button
+                onClick={() => onNavigate('portfolio')}
                 className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors"
               >
                 Portfolio
-              </a>
+              </button>
             </div>
           </div>
 
@@ -129,6 +130,7 @@ export default function OurObjective({ onNavigate }) {
           <a href="#" className="hover:text-red-500 transition-colors">Jobs</a>
           <a href="#" className="hover:text-red-500 transition-colors">Support</a>
         </nav>
+        </div>
       </header>
 
       {/* Main Content */}
