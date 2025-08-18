@@ -111,8 +111,20 @@ export default function Header({ onNavigate, handleLogoClick, currentPage }) {
             </div>
           </div>
 
-          <a href="#" className="hover:text-red-500 transition-colors">Jobs</a>
-          <a href="#" className="hover:text-red-500 transition-colors">Support</a>
+          {/* Jobs Button */}
+          <button
+            onClick={() => onNavigate('jobs')}
+            className={`text-sm ${currentPage === 'jobs' ? 'text-red-500' : 'text-gray-500'} hover:text-red-500 transition-colors`}
+          >
+            Jobs
+          </button>
+          {/* Support Button */}
+          <button
+            onClick={() => onNavigate('support')}
+            className={`text-sm ${currentPage === 'support' ? 'text-red-500' : 'text-gray-500'} hover:text-red-500 transition-colors`}
+          >
+            Support
+          </button>
         </nav>
       </div>
     </header>

@@ -1,29 +1,25 @@
 import { useState, useEffect } from 'react';
 import OurObjective from './OurObjective';
+import Portfolio from './Portfolio';
+import ProductDevelopment from './ProductDevelopment';
+import ITConsulting from './ITConsulting';
+import ITResourcing from './ITResourcing';
+import traininginternship from './TrainingPage';
+import Jobs from './Jobs';
+import Support from './Support';
+import Header from './Header';
+import Footer from './Footer';
 import { Button } from "./components/ui/button";
+import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import {
   ArrowRight,
   Facebook,
   Twitter,
   Mail,
-  ChevronDown,
   Linkedin,
-  Users,
-  Target,
-  Award,
   ChevronLeft,
   ChevronRight,
-  Briefcase,
-  TrendingUp,
-  Globe,
 } from "lucide-react";
-import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import Portfolio from './Portfolio';
-import ProductDevelopment from './ProductDevelopment';
-import ITConsulting from './ITConsulting';
-import ITResourcing from './ITResourcing';
-import Header from './Header';
-import Footer from './Footer';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -107,6 +103,12 @@ export default function App() {
     case 'itresourcing':
       content = <ITResourcing />;
       break;
+    case 'jobs':
+      content = <Jobs  />;
+      break;
+    case 'support':
+      content = <Support />;
+      break;
     default:
       content = (
         <main className="flex flex-1 relative">
@@ -126,12 +128,12 @@ export default function App() {
                 <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md">
                   Get Started
                 </Button>
-                <a
-                  href="#"
+                <button
+                  onClick={() => setCurrentPage('productdevelopment')}
                   className="flex items-center text-red-500 hover:text-red-600"
                 >
                   <ArrowRight className="mr-2 h-4 w-4" /> See Our Services
-                </a>
+                </button>
               </div>
 
               {/* Slider */}
@@ -147,7 +149,7 @@ export default function App() {
                         alt={`Corporate slide ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-800/60"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
                       <div className="absolute top-4 left-4">
                         <h2 className="text-4xl font-bold text-white max-w-md">{slide.title}</h2>
                       </div>
@@ -217,7 +219,7 @@ export default function App() {
                     where opinions / needs keep changing, are you doing enough 
                     with right approach, for your Business to take inform decision? 
                     Are you aware that these days BI approach is 
-                    “AGILE”. Walk-in to see how we can help.
+                    "AGILE". Walk-in to see how we can help.
                   </p>
                 </div>
               </div>
@@ -252,32 +254,30 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col relative">
-      <Header onNavigate={setCurrentPage} handleLogoClick={handleLogoClick} />
-      {content}
-      <Footer onNavigate={setCurrentPage} />
-      {/* Social Sidebar (shared across all pages) */}
-      <div
-        className="flex flex-col items-center space-y-6 bg-red-500 p-6 rounded-lg shadow-lg z-50"
-        style={{
-          position: "fixed",
-          top: "50%",
-          right: "20px",
-          transform: "translateY(-50%)",
-        }}
-      >
-        <a href="#" className="text-white hover:text-red-100">
-          <Facebook className="h-5 w-5" />
-        </a>
-        <a href="#" className="text-white hover:text-red-100">
-          <Twitter className="h-5 w-5" />
-        </a>
-        <a href="#" className="text-white hover:text-red-100">
-          <Mail className="h-5 w-5" />
-        </a>
-        <a href="#" className="text-white hover:text-red-100">
-          <Linkedin className="h-5 w-5" />
-        </a>
+      <Header onNavigate={setCurrentPage} handleLogoClick={handleLogoClick} currentPage={currentPage} />
+      <div className="flex flex-1">
+        {content}
       </div>
+      
+      {/* Social Sidebar - Now appears on all pages */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 hidden lg:block z-50">
+        <div className="flex flex-col items-center space-y-6 bg-red-500 p-6 rounded-lg shadow-lg">
+          <a href="#" className="text-white hover:text-gray-200">
+            <Facebook className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white hover:text-gray-200">
+            <Twitter className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white hover:text-gray-200">
+            <Mail className="h-6 w-6" />
+          </a>
+          <a href="#" className="text-white hover:text-gray-200">
+            <Linkedin className="h-6 w-6" />
+          </a>
+        </div>
+      </div>
+      
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }
