@@ -1,7 +1,8 @@
 import { Button } from "./components/ui/button";
 import { ArrowRight, ChevronDown, Users, Target, Award, ChevronLeft, ChevronRight, Briefcase, TrendingUp, Globe, Home, ChevronRight as ChevronRightSmall, Code, Database, Cloud, Smartphone, ShoppingCart, Cog, CheckCircle, Star, Zap, Building2, Truck, Factory, Heart, Shield, Landmark, Package, Layers, Server, GitBranch, Cpu, MonitorSpeaker, Rocket, MessageSquare, Bot, Settings, Network, UserPlus, Clock, Search, PieChart, Calendar, MapPin, Phone, Send, HeadphonesIcon, BookOpen, GraduationCap, Play, CheckSquare, FileText, Monitor, Globe2, Wrench } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import genexcorpLogo from './assets/genexcorp-logo.png'; // Adjust path based on your project structure
+import genexcorpLogo from './assets/genexcorp-logo.png';
+import { metrics } from './metrics';
 
 export default function TrainingPage({ handleLogoClick, onNavigate }) {
   return (
@@ -279,7 +280,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                 <h3 className="text-2xl text-gray-800 mb-8">Technology Consulting Arena</h3>
                 
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
-                  {/* QlikView */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Database className="h-8 w-8 text-green-600" />
@@ -288,7 +288,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     <p className="text-sm text-gray-600">Business Intelligence & Analytics Platform</p>
                   </div>
 
-                  {/* Tableau */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <TrendingUp className="h-8 w-8 text-blue-600" />
@@ -297,7 +296,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     <p className="text-sm text-gray-600">Data Visualization & Analytics</p>
                   </div>
 
-                  {/* Hive */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Code className="h-8 w-8 text-yellow-600" />
@@ -306,7 +304,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     <p className="text-sm text-gray-600">Big Data Warehouse Software</p>
                   </div>
 
-                  {/* Cloudera */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Cloud className="h-8 w-8 text-purple-600" />
@@ -315,7 +312,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     <p className="text-sm text-gray-600">Enterprise Data Cloud Platform</p>
                   </div>
 
-                  {/* Informatica */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Cog className="h-8 w-8 text-red-600" />
@@ -324,7 +320,6 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     <p className="text-sm text-gray-600">Data Integration & Management</p>
                   </div>
 
-                  {/* SAP NetWeaver */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Building2 className="h-8 w-8 text-indigo-600" />
@@ -340,56 +335,48 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                 <h3 className="text-2xl text-gray-800 mb-8">Functional Consulting Arena</h3>
                 
                 <div className="grid md:grid-cols-4 gap-6">
-                  {/* E-commerce */}
                   <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <ShoppingCart className="h-10 w-10 text-green-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">E-commerce</h4>
                     <p className="text-xs text-gray-600">Digital Commerce Solutions</p>
                   </div>
 
-                  {/* Manufacturing */}
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Factory className="h-10 w-10 text-blue-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Manufacturing</h4>
                     <p className="text-xs text-gray-600">Industrial Operations</p>
                   </div>
 
-                  {/* Retail */}
                   <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Building2 className="h-10 w-10 text-red-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Retail</h4>
                     <p className="text-xs text-gray-600">Customer Experience</p>
                   </div>
 
-                  {/* Life Science */}
                   <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Heart className="h-10 w-10 text-purple-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Life Science</h4>
                     <p className="text-xs text-gray-600">Healthcare & Research</p>
                   </div>
 
-                  {/* Insurance */}
                   <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Shield className="h-10 w-10 text-orange-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Insurance</h4>
                     <p className="text-xs text-gray-600">Risk Management</p>
                   </div>
 
-                  {/* Banking */}
                   <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Landmark className="h-10 w-10 text-teal-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Banking</h4>
                     <p className="text-xs text-gray-600">Financial Services</p>
                   </div>
 
-                  {/* Logistics */}
                   <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Truck className="h-10 w-10 text-yellow-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Logistics</h4>
                     <p className="text-xs text-gray-600">Supply Chain Management</p>
                   </div>
 
-                  {/* Warehousing */}
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Package className="h-10 w-10 text-gray-600 mx-auto mb-3" />
                     <h4 className="text-gray-800 mb-2">Warehousing</h4>
@@ -441,19 +428,19 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Total Programs</span>
-                      <span className="text-2xl text-blue-500">7+</span>
+                      <span className="text-2xl text-blue-500">{metrics.training.totalPrograms}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Technologies</span>
-                      <span className="text-2xl text-green-500">25+</span>
+                      <span className="text-2xl text-green-500">{metrics.training.technologies}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Success Rate</span>
-                      <span className="text-2xl text-purple-500">95%</span>
+                      <span className="text-2xl text-purple-500">{metrics.training.successRate}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Duration</span>
-                      <span className="text-lg text-red-500">3-6 Months</span>
+                      <span className="text-lg text-red-500">{metrics.training.duration}</span>
                     </div>
                   </div>
                 </div>
@@ -514,7 +501,7 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     </div>
                     <div className="flex justify-between">
                       <span>Duration</span>
-                      <span>3-6 Months</span>
+                      <span>{metrics.training.duration}</span>
                     </div>
                     <div className="mt-3 pt-3 border-t border-green-200">
                       <div className="flex items-center space-x-2">

@@ -13,6 +13,7 @@ import {
   Award,
 } from "lucide-react";
 import { Button } from "./components/ui/button";
+import { metrics } from './metrics';
 
 export default function OurObjective() {
   return (
@@ -145,7 +146,7 @@ export default function OurObjective() {
                   <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-red-200 transition-colors">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-2xl text-red-500 mb-1">500+</div>
+                        <div className="text-2xl text-red-500 mb-1">{metrics.objective.projectsDelivered}</div>
                         <div className="text-sm text-gray-600">Projects Delivered</div>
                       </div>
                       <CheckCircle className="h-8 w-8 text-red-500" />
@@ -154,7 +155,7 @@ export default function OurObjective() {
                   <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-blue-200 transition-colors">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-2xl text-blue-500 mb-1">98%</div>
+                        <div className="text-2xl text-blue-500 mb-1">{metrics.objective.clientSatisfaction}</div>
                         <div className="text-sm text-gray-600">Client Satisfaction</div>
                       </div>
                       <Star className="h-8 w-8 text-blue-500" />
@@ -163,7 +164,7 @@ export default function OurObjective() {
                   <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-green-200 transition-colors">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-2xl text-green-500 mb-1">15+</div>
+                        <div className="text-2xl text-green-500 mb-1">{metrics.objective.yearsExperience}</div>
                         <div className="text-sm text-gray-600">Years Experience</div>
                       </div>
                       <Zap className="h-8 w-8 text-green-500" />

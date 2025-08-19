@@ -1,4 +1,4 @@
-import { Button } from "./components/ui/button";
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   ShoppingCart,
@@ -17,10 +17,65 @@ import {
   MonitorSpeaker,
   Layers,
   Mail,
-  TrendingUp, // Added TrendingUp import
+  TrendingUp,
 } from "lucide-react";
 
 export default function ProductDevelopment() {
+  const [metrics, setMetrics] = useState({
+    productsDelivered: '...',
+    ecommercePlatforms: '...',
+    cloudApplications: '...',
+    devOpsPipelines: '...',
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [prod, ecom, cloud, devops] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=200&max=300')
+            .then(res => {
+              console.log('Products response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Products data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=150&max=200')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=80&max=100')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=60&max=80')
+            .then(res => res.json())
+            .then(data => data[0].random),
+        ]);
+
+        console.log('Fetched values:', { prod, ecom, cloud, devops });
+
+        setMetrics({
+          productsDelivered: prod,
+          ecommercePlatforms: ecom,
+          cloudApplications: cloud,
+          devOpsPipelines: devops,
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          productsDelivered: Math.floor(Math.random() * 100) + 200,
+          ecommercePlatforms: Math.floor(Math.random() * 50) + 150,
+          cloudApplications: Math.floor(Math.random() * 20) + 80,
+          devOpsPipelines: Math.floor(Math.random() * 20) + 60,
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -29,8 +84,8 @@ export default function ProductDevelopment() {
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
             <h1 className="text-5xl text-gray-800 mb-6">
-                  Product <span className="text-red-500">Development</span>
-                </h1>
+              Product <span className="text-red-500">Development</span>
+            </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               At GenexCorp, we turn your vision into reality with innovative product development solutions tailored to your business needs
             </h2>
@@ -41,12 +96,11 @@ export default function ProductDevelopment() {
             <div className="lg:col-span-3 space-y-8 text-gray-700 leading-relaxed">
               {/* Product Development Overview */}
               <div>
-                
                 <p>
-                  At GenexCorp, our product development services are designed to deliver end-to-end solutions that drive business growth and innovation. From ideation to deployment, we partner with you to create scalable, secure, and user-focused products that meet the demands of today’s dynamic digital landscape.
+                  At GenexCorp, our product development services are designed to deliver end-to-end solutions that drive business growth and innovation. From ideation to deployment, we partner with you to create scalable, secure, and user-focused products that meet the demands of today's dynamic digital landscape.
                 </p>
                 <p>
-                  Our agile development approach ensures rapid prototyping, iterative feedback, and seamless integration with your existing systems. Whether you’re building an e-commerce platform, a mobile application, or a custom enterprise solution, our team of experts leverages cutting-edge technologies to deliver measurable results.
+                  Our agile development approach ensures rapid prototyping, iterative feedback, and seamless integration with your existing systems. Whether you're building an e-commerce platform, a mobile application, or a custom enterprise solution, our team of experts leverages cutting-edge technologies to deliver measurable results.
                 </p>
               </div>
 
@@ -196,19 +250,19 @@ export default function ProductDevelopment() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Products Delivered</span>
-                      <span className="text-2xl text-green-500">200+</span>
+                      <span className="text-2xl text-green-500">{metrics.productsDelivered}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">E-commerce Platforms</span>
-                      <span className="text-2xl text-blue-500">150+</span>
+                      <span className="text-2xl text-blue-500">{metrics.ecommercePlatforms}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Cloud Applications</span>
-                      <span className="text-2xl text-purple-500">80+</span>
+                      <span className="text-2xl text-purple-500">{metrics.cloudApplications}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">DevOps Pipelines</span>
-                      <span className="text-2xl text-red-500">60+</span>
+                      <span className="text-2xl text-red-500">{metrics.devOpsPipelines}</span>
                     </div>
                   </div>
                 </div>
@@ -252,9 +306,9 @@ export default function ProductDevelopment() {
                     <p className="text-sm text-gray-300 mb-4">
                       Let's discuss your next product development project
                     </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
+                    <button className="bg-red-500 hover:bg-red-600 text-white w-full px-4 py-2 rounded transition-colors">
                       Start Your Project
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -268,12 +322,12 @@ export default function ProductDevelopment() {
               Partner with GenexCorp to create innovative, scalable, and user-focused products that drive your business forward.
             </p>
             <div className="flex justify-center space-x-6">
-              <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4">
+              <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded transition-colors flex items-center">
                 Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4">
+              </button>
+              <button className="border border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4 rounded transition-colors">
                 Schedule a Consultation
-              </Button>
+              </button>
             </div>
           </div>
         </div>

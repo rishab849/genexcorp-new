@@ -1,8 +1,30 @@
 import { Button } from "./components/ui/button";
 import { ArrowRight, Facebook, Twitter, Mail, ChevronDown, Linkedin, Users, Target, Award, ChevronLeft, ChevronRight, Briefcase, TrendingUp, Globe, Home, ChevronRight as ChevronRightSmall, Code, Database, Cloud, Smartphone, ShoppingCart, Cog, CheckCircle, Star, Zap, Building2, Truck, Factory, Heart, Shield, Landmark, Package, Layers, Server, GitBranch, Cpu, MonitorSpeaker, Rocket, MessageSquare, Bot, Settings, Network, UserPlus, Clock, Search, PieChart, Calendar, MapPin, Phone, Send, HeadphonesIcon, BookOpen, GraduationCap, Play, CheckSquare, FileText, Monitor, Globe2, Wrench, Download, DollarSign } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
+import { useState } from "react";
 
 export default function CorporateTraining() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleBookTraining = (event) => {
+    if (event) event.preventDefault();
+    if (isFormOpen) {
+      const formData = {
+        personName: document.getElementById("personName")?.value || "",
+        personEmail: document.getElementById("personEmail")?.value || "",
+        phoneNo: document.getElementById("phoneNo")?.value || "",
+        course: document.getElementById("course")?.value || "",
+        classType: document.querySelector('input[name="classType"]:checked')?.value || "",
+        message: document.getElementById("message")?.value || "",
+        timestamp: new Date().toISOString(),
+      };
+      console.log("Booking Form Data:", formData);
+      setIsFormOpen(false);
+    } else {
+      setIsFormOpen(true);
+    }
+  };
+
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -11,8 +33,8 @@ export default function CorporateTraining() {
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
             <h1 className="text-5xl text-gray-800 mb-6">
-                  Corporate <span className="text-red-500">Training</span>
-                </h1>
+              Corporate <span className="text-red-500">Training</span>
+            </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               At GenexCorp, course is being designed to accelerate your career and for those companies who indeed trying to create a team of own in the arena of in-Memory analytics.
             </h2>
@@ -309,7 +331,10 @@ export default function CorporateTraining() {
 
                 {/* Book My Training Button */}
                 <div className="bg-orange-500 hover:bg-orange-600 transition-colors rounded-lg">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full py-3 flex items-center justify-center space-x-2">
+                  <Button 
+                    className="bg-orange-500 hover:bg-orange-600 text-white w-full py-3 flex items-center justify-center space-x-2"
+                    onClick={handleBookTraining}
+                  >
                     <CheckCircle className="h-5 w-5" />
                     <span>BOOK MY TRAINING</span>
                   </Button>
@@ -376,6 +401,66 @@ export default function CorporateTraining() {
           <Linkedin className="h-5 w-5" />
         </a>
       </div>
+
+      {/* Booking Form Modal */}
+      {isFormOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-100 border border-blue-200 rounded-lg p-6 w-full max-w-md">
+            <h4 className="text-lg text-gray-800 mb-4">Book My Training</h4>
+            <form onSubmit={handleBookTraining} className="space-y-4">
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <label className="block text-sm text-gray-700 mb-1">Person Name *</label>
+                  <input id="personName" type="text" className="w-full p-2 border border-gray-300 rounded" required />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-sm text-gray-700 mb-1">Person Email *</label>
+                  <input id="personEmail" type="email" className="w-full p-2 border border-gray-300 rounded" required />
+                </div>
+              </div>
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <label className="block text-sm text-gray-700 mb-1">Phone No *</label>
+                  <input id="phoneNo" type="tel" className="w-full p-2 border border-gray-300 rounded" required />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-sm text-gray-700 mb-1">Select Your Course *</label>
+                  <select id="course" className="w-full p-2 border border-gray-300 rounded">
+                    <option value="">-- Select --</option>
+                    <option value="Change in Technology">Corporate Training</option>
+                    <option value="Fresher">Career Augmentation Training</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm text-gray-700 mb-1">Select Your Classes *</label>
+                <div className="flex space-x-4">
+                  <label className="flex items-center">
+                    <input type="radio" name="classType" value="Change in Technology" className="mr-2" required />
+                    Change in Technology - $450 per person
+                  </label>
+                  <label className="flex items-center">
+                    <input type="radio" name="classType" value="Fresher" className="mr-2" />
+                    Fresher - $500 per person
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm text-gray-700 mb-1">Message</label>
+                <textarea id="message" className="w-full p-2 border border-gray-300 rounded h-24"></textarea>
+              </div>
+              <div className="flex justify-end space-x-4">
+                <Button type="button" className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4" onClick={() => setIsFormOpen(false)}>
+                  Cancel
+                </Button>
+                <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4">
+                  Book
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

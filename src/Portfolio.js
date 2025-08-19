@@ -15,6 +15,7 @@ import {
   Package,
   Briefcase,
 } from "lucide-react";
+import { metrics } from './metrics';
 
 export default function Portfolio() {
   return (
@@ -176,19 +177,19 @@ export default function Portfolio() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Technology Partners</span>
-                      <span className="text-2xl text-blue-500">6+</span>
+                      <span className="text-2xl text-blue-500">{metrics.portfolio.technologyPartners}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Industry Domains</span>
-                      <span className="text-2xl text-green-500">8+</span>
+                      <span className="text-2xl text-green-500">{metrics.portfolio.industryDomains}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Solutions Delivered</span>
-                      <span className="text-2xl text-red-500">200+</span>
+                      <span className="text-2xl text-red-500">{metrics.portfolio.solutionsDelivered}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Active Projects</span>
-                      <span className="text-2xl text-purple-500">50+</span>
+                      <span className="text-2xl text-purple-500">{metrics.portfolio.activeProjects}</span>
                     </div>
                   </div>
                 </div>

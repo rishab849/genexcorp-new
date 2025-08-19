@@ -1,4 +1,4 @@
-import { Button } from "./components/ui/button";
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Users,
@@ -23,6 +23,62 @@ import {
 } from "lucide-react";
 
 export default function ITConsulting() {
+  const [metrics, setMetrics] = useState({
+    activeConsultants: '...',
+    technologyPartners: '...',
+    industryDomains: '...',
+    consultingProjects: '...',
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching IT consulting metrics...');
+        
+        const [consultants, partners, domains, projects] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=40&max=60')
+            .then(res => {
+              console.log('Consultants response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Consultants data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=5&max=10')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=6&max=12')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=100&max=150')
+            .then(res => res.json())
+            .then(data => data[0].random),
+        ]);
+
+        console.log('Fetched consulting values:', { consultants, partners, domains, projects });
+
+        setMetrics({
+          activeConsultants: consultants,
+          technologyPartners: partners,
+          industryDomains: domains,
+          consultingProjects: projects,
+        });
+      } catch (error) {
+        console.error('Error fetching consulting metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          activeConsultants: Math.floor(Math.random() * 20) + 40,
+          technologyPartners: Math.floor(Math.random() * 5) + 5,
+          industryDomains: Math.floor(Math.random() * 6) + 6,
+          consultingProjects: Math.floor(Math.random() * 50) + 100,
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
+
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -48,7 +104,7 @@ export default function ITConsulting() {
                   At GenexCorp, our IT consulting services empower businesses to achieve their goals through strategic technology solutions. We combine deep industry expertise with cutting-edge tools to deliver tailored consulting services that drive efficiency, innovation, and growth.
                 </p>
                 <p>
-                  Our team of technical, functional, and business analyst specialists works closely with you to understand your objectives, design robust solutions, and implement transformative strategies. From DevOps to AI-driven chatbots, we provide end-to-end consulting to navigate the complexities of today’s digital landscape.
+                  Our team of technical, functional, and business analyst specialists works closely with you to understand your objectives, design robust solutions, and implement transformative strategies. From DevOps to AI-driven chatbots, we provide end-to-end consulting to navigate the complexities of today's digital landscape.
                 </p>
               </div>
 
@@ -198,19 +254,19 @@ export default function ITConsulting() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Active Consultants</span>
-                      <span className="text-2xl text-blue-500">45+</span>
+                      <span className="text-2xl text-blue-500">{metrics.activeConsultants}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Technology Partners</span>
-                      <span className="text-2xl text-green-500">6+</span>
+                      <span className="text-2xl text-green-500">{metrics.technologyPartners}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Industry Domains</span>
-                      <span className="text-2xl text-purple-500">8+</span>
+                      <span className="text-2xl text-purple-500">{metrics.industryDomains}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Consulting Projects</span>
-                      <span className="text-2xl text-red-500">120+</span>
+                      <span className="text-2xl text-red-500">{metrics.consultingProjects}</span>
                     </div>
                   </div>
                 </div>
@@ -265,9 +321,9 @@ export default function ITConsulting() {
                     <p className="text-sm text-gray-300 mb-4">
                       Connect with our expert consultants for your next project
                     </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
+                    <button className="bg-red-500 hover:bg-red-600 text-white w-full px-4 py-2 rounded transition-colors">
                       Schedule Consultation
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -281,12 +337,12 @@ export default function ITConsulting() {
               Partner with GenexCorp to leverage cutting-edge IT consulting services that drive innovation and growth.
             </p>
             <div className="flex justify-center space-x-6">
-              <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4">
+              <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded transition-colors flex items-center">
                 Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4">
+              </button>
+              <button className="border border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4 rounded transition-colors">
                 Schedule a Consultation
-              </Button>
+              </button>
             </div>
           </div>
         </div>

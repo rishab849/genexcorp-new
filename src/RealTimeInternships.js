@@ -1,9 +1,10 @@
 import { Button } from "./components/ui/button";
 import { ArrowRight, ChevronDown, Users, Target, Award, ChevronLeft, ChevronRight, Briefcase, TrendingUp, Globe, Home, ChevronRight as ChevronRightSmall, Code, Database, Cloud, Smartphone, ShoppingCart, Cog, CheckCircle, Star, Zap, Building2, Truck, Factory, Heart, Shield, Landmark, Package, Layers, Server, GitBranch, Cpu, MonitorSpeaker, Rocket, MessageSquare, Bot, Settings, Network, UserPlus, Clock, Search, PieChart, Calendar, MapPin, Phone, Send, HeadphonesIcon, BookOpen, GraduationCap, Play, CheckSquare, FileText, Monitor, Globe2, Wrench } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import genexcorpLogo from './assets/genexcorp-logo.png'; // Adjust path based on your project structure
+import genexcorpLogo from './assets/genexcorp-logo.png';
+import { metrics } from './metrics';
 
-export default function TrainingPage({ handleLogoClick, onNavigate }) {
+export default function InternshipPage({ handleLogoClick, onNavigate }) {
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -426,19 +427,19 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Total Internships</span>
-                      <span className="text-2xl text-blue-500">7+</span>
+                      <span className="text-2xl text-blue-500">{metrics.internship.totalInternships}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Technologies Covered</span>
-                      <span className="text-2xl text-green-500">25+</span>
+                      <span className="text-2xl text-green-500">{metrics.internship.technologies}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Placement Rate</span>
-                      <span className="text-2xl text-purple-500">90%</span>
+                      <span className="text-2xl text-purple-500">{metrics.internship.placementRate}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Duration</span>
-                      <span className="text-lg text-red-500">2-4 Months</span>
+                      <span className="text-lg text-red-500">{metrics.internship.duration}</span>
                     </div>
                   </div>
                 </div>
@@ -499,7 +500,7 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                     </div>
                     <div className="flex justify-between">
                       <span>Duration</span>
-                      <span>2-4 Months</span>
+                      <span>{metrics.internship.duration}</span>
                     </div>
                     <div className="mt-3 pt-3 border-t border-green-200">
                       <div className="flex items-center space-x-2">

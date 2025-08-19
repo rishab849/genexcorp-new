@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "./components/ui/button";
 import {
   ArrowRight,
@@ -31,6 +32,49 @@ import {
 } from "lucide-react";
 
 export default function Jobs() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    resume: null,
+    coverLetter: "",
+  });
+
+  const handleApplyClick = (jobTitle) => {
+    setSelectedJob(jobTitle);
+    setIsModalOpen(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files ? files[0] : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Mock receiver: Log the application data to console
+    console.log("Application Submitted:", {
+      jobTitle: selectedJob,
+      ...formData,
+      resume: formData.resume ? formData.resume.name : "No file uploaded",
+    });
+    // Reset form and close modal
+    setFormData({ name: "", email: "", resume: null, coverLetter: "" });
+    setIsModalOpen(false);
+    setSelectedJob(null);
+    alert("Application submitted successfully! (Check console for details)");
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedJob(null);
+    setFormData({ name: "", email: "", resume: null, coverLetter: "" });
+  };
+
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -39,8 +83,8 @@ export default function Jobs() {
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
             <h1 className="text-5xl text-gray-800 mb-6">
-                   <span className="text-red-500">Jobs</span>
-                </h1>
+              <span className="text-red-500">Jobs</span>
+            </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               Everyone that is part of GenexCorp is passionate about how IT can help transform your business, which is why we work the way we do and why we are so successful at what we do
             </h2>
@@ -70,7 +114,10 @@ export default function Jobs() {
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+                    <Button
+                      className="bg-blue-500 hover:bg-blue-600 text-white"
+                      onClick={() => handleApplyClick("Full Stack Developer")}
+                    >
                       Apply Now
                     </Button>
                   </div>
@@ -102,7 +149,10 @@ export default function Jobs() {
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                    <Button
+                      className="bg-orange-500 hover:bg-orange-600 text-white"
+                      onClick={() => handleApplyClick("AWS Cloud Engineer")}
+                    >
                       Apply Now
                     </Button>
                   </div>
@@ -134,7 +184,10 @@ export default function Jobs() {
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-green-500 hover:bg-green-600 text-white">
+                    <Button
+                      className="bg-green-500 hover:bg-green-600 text-white"
+                      onClick={() => handleApplyClick("DevOps Engineer")}
+                    >
                       Apply Now
                     </Button>
                   </div>
@@ -409,6 +462,79 @@ export default function Jobs() {
           </div>
         </div>
       </div>
+
+      {/* Application Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+            <h3 className="text-2xl text-gray-800 mb-6">
+              Apply for {selectedJob}
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm text-gray-600 mb-1">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-600 mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-600 mb-1">Resume</label>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  accept=".pdf,.doc,.docx"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-600 mb-1">Cover Letter</label>
+                <textarea
+                  name="coverLetter"
+                  value={formData.coverLetter}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  placeholder="Enter your cover letter"
+                  rows="4"
+                />
+              </div>
+              <div className="flex justify-end space-x-4">
+                <Button
+                  variant="outline"
+                  className="border-gray-500 text-gray-500 hover:bg-gray-50"
+                  onClick={handleCloseModal}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  onClick={handleSubmit}
+                >
+                  Submit Application
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
