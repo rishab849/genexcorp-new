@@ -47,24 +47,36 @@ export default function Footer({ onNavigate }) {
               </button>
             </li>
             <li>
-              <a href="#" className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block">
+              <button 
+                onClick={() => onNavigate('corporatetraining')} 
+                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+              >
                 Corporate Training
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block">
+              <button 
+                onClick={() => onNavigate('training')} 
+                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+              >
                 Career Augmentation Training
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block">
+              <button 
+                onClick={() => onNavigate('jobs')} 
+                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+              >
                 Jobs
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block">
+              <button 
+                onClick={() => onNavigate('support')} 
+                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+              >
                 Support
-              </a>
+              </button>
             </li>
           </ul>
         </div>

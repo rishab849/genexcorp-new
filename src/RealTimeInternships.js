@@ -12,263 +12,263 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
             <h1 className="text-5xl text-gray-800 mb-6">
-                  Training <span className="text-red-500">Program</span>
-                </h1>
+              Real-Time <span className="text-red-500">Internships</span>
+            </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
-              Empowering minds through comprehensive training programs that bridge the gap between learning and real-world application. Every skill mastered today shapes tomorrow's innovations.
+              Gain hands-on experience through real-time internships that connect academic learning with industry challenges. Build skills that drive innovation.
             </h2>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Left Content */}
             <div className="lg:col-span-2 space-y-8 text-gray-700 leading-relaxed">
-              {/* Training Programs Header */}
+              {/* Internship Programs Header */}
               <div>
-                <h3 className="text-2xl text-gray-800 mb-8">Our Training Programs</h3>
+                <h3 className="text-2xl text-gray-800 mb-8">Our Internship Programs</h3>
               </div>
 
-              {/* Splunk Development */}
+              {/* Splunk Internship */}
               <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-green-500 p-2 rounded-lg">
                     <Database className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">Splunk Development</h4>
+                  <h4 className="text-xl text-gray-800">Splunk Internship</h4>
                 </div>
                 <p className="text-gray-700 mb-4 leading-relaxed">
-                  Conducting Specialized / Real Time Splunk Workshop. Looking for candidates with following qualities:
+                  Join our real-time Splunk internship to work on live projects. We seek candidates with:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      <span>Self Starter, Proactive, Ability to Google and YouTube</span>
+                      <span>Proactive mindset and ability to research independently</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      <span>Have an AWS Account (Free Tier)</span>
+                      <span>Access to an AWS Free Tier account</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      <span>Undergone Splunk Training, Basic Knowledge of SPL commands and Admin Commands.</span>
+                      <span>Basic knowledge of Splunk, including SPL and admin commands</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* DevOps Development */}
+              {/* DevOps Internship */}
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-blue-500 p-2 rounded-lg">
                     <GitBranch className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">DevOps Development</h4>
+                  <h4 className="text-xl text-gray-800">DevOps Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Server className="h-4 w-4 text-blue-600" />
-                      <span>Jenkins</span>
+                      <span>Jenkins CI/CD pipelines</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Package className="h-4 w-4 text-blue-600" />
-                      <span>Docker</span>
+                      <span>Docker containerization</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Cloud className="h-4 w-4 text-blue-600" />
-                      <span>Kubernetes</span>
+                      <span>Kubernetes orchestration</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <GitBranch className="h-4 w-4 text-blue-600" />
-                      <span>GitLab / GitActions</span>
+                      <span>GitLab or GitHub Actions</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Cog className="h-4 w-4 text-blue-600" />
-                      <span>Ansible</span>
+                      <span>Ansible automation</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* FullStack Development */}
+              {/* FullStack Internship */}
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-purple-500 p-2 rounded-lg">
                     <Code className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">FullStack Development</h4>
+                  <h4 className="text-xl text-gray-800">FullStack Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Code className="h-4 w-4 text-purple-600" />
-                      <span>MERN</span>
+                      <span>MERN stack development</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Code className="h-4 w-4 text-purple-600" />
-                      <span>Python</span>
+                      <span>Python backend</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Database className="h-4 w-4 text-purple-600" />
-                      <span>MongoDB</span>
+                      <span>MongoDB databases</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Database className="h-4 w-4 text-purple-600" />
-                      <span>FireStore</span>
+                      <span>Firebase/Firestore integration</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Web Development */}
+              {/* Web Development Internship */}
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-orange-500 p-2 rounded-lg">
                     <Globe2 className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">Web Development</h4>
+                  <h4 className="text-xl text-gray-800">Web Development Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Code className="h-4 w-4 text-orange-600" />
-                      <span>HTML/CSS</span>
+                      <span>HTML5/CSS3</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Code className="h-4 w-4 text-orange-600" />
-                      <span>Javascript</span>
+                      <span>JavaScript (ES6+)</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Code className="h-4 w-4 text-orange-600" />
-                      <span>ReactJS</span>
+                      <span>ReactJS with hooks</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Network className="h-4 w-4 text-orange-600" />
-                      <span>API</span>
+                      <span>RESTful APIs</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Server className="h-4 w-4 text-orange-600" />
-                      <span>ExpressJS</span>
+                      <span>Node.js/Express.js</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* ServiceNow Development */}
+              {/* ServiceNow Internship */}
               <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-teal-500 p-2 rounded-lg">
                     <FileText className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">ServiceNow Development</h4>
+                  <h4 className="text-xl text-gray-800">ServiceNow Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center space-x-2">
                     <FileText className="h-4 w-4 text-teal-600" />
-                    <span>Tickets</span>
+                    <span>Incident management</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Network className="h-4 w-4 text-teal-600" />
-                    <span>Rest API</span>
+                    <span>ServiceNow APIs</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Settings className="h-4 w-4 text-teal-600" />
-                    <span>WorkFlow</span>
+                    <span>Workflow automation</span>
                   </div>
                 </div>
               </div>
 
-              {/* ChatBot Development */}
+              {/* ChatBot Internship */}
               <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 border border-indigo-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-indigo-500 p-2 rounded-lg">
                     <Bot className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">ChatBot Development</h4>
+                  <h4 className="text-xl text-gray-800">ChatBot Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Bot className="h-4 w-4 text-indigo-600" />
-                      <span>Professional Bot</span>
+                      <span>Enterprise chatbot solutions</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Cloud className="h-4 w-4 text-indigo-600" />
-                      <span>Have an Azure (Free Tier)</span>
+                      <span>Azure Free Tier access</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Globe2 className="h-4 w-4 text-indigo-600" />
-                      <span>WebApp ChatBot</span>
+                      <span>Web-based chatbot development</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <MessageSquare className="h-4 w-4 text-indigo-600" />
-                      <span>Channels Integration</span>
+                      <span>Multi-channel integration</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <MessageSquare className="h-4 w-4 text-indigo-600" />
-                      <span>LUIS</span>
+                      <span>Microsoft LUIS</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <MessageSquare className="h-4 w-4 text-indigo-600" />
-                      <span>QNA</span>
+                      <span>QnA Maker</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* AWS Development */}
+              {/* AWS Internship */}
               <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-yellow-500 p-2 rounded-lg">
                     <Cloud className="h-6 w-6 text-white" />
                   </div>
-                  <h4 className="text-xl text-gray-800">AWS Development</h4>
+                  <h4 className="text-xl text-gray-800">AWS Internship</h4>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Globe2 className="h-4 w-4 text-yellow-600" />
-                      <span>CloudFront</span>
+                      <span>CloudFront CDN</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Database className="h-4 w-4 text-yellow-600" />
-                      <span>S3 Bucket</span>
+                      <span>S3 storage solutions</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Server className="h-4 w-4 text-yellow-600" />
-                      <span>Ec2</span>
+                      <span>EC2 instance management</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <FileText className="h-4 w-4 text-yellow-600" />
-                      <span>UserData</span>
+                      <span>UserData scripting</span>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Shield className="h-4 w-4 text-yellow-600" />
-                      <span>IAM</span>
+                      <span>IAM roles and policies</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Zap className="h-4 w-4 text-yellow-600" />
-                      <span>Lambda</span>
+                      <span>Lambda functions</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Network className="h-4 w-4 text-yellow-600" />
-                      <span>API Gateway</span>
+                      <span>API Gateway integration</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Wrench className="h-4 w-4 text-yellow-600" />
-                      <span>Developer Tools of aws</span>
+                      <span>AWS Developer Tools</span>
                     </div>
                   </div>
                 </div>
@@ -276,157 +276,142 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
 
               {/* Technology Consulting Arena */}
               <div className="mt-12">
-                <h3 className="text-2xl text-gray-800 mb-8">Technology Consulting Arena</h3>
+                <h3 className="text-2xl text-gray-800 mb-8">Technology Consulting Internships</h3>
                 
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
-                  {/* QlikView */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Database className="h-8 w-8 text-green-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">QlikView</h4>
-                    <p className="text-sm text-gray-600">Business Intelligence & Analytics Platform</p>
+                    <h4 className="text-lg text-gray-800 mb-2">QlikView Internship</h4>
+                    <p className="text-sm text-gray-600">Work on BI and analytics projects</p>
                   </div>
 
-                  {/* Tableau */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <TrendingUp className="h-8 w-8 text-blue-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">Tableau</h4>
-                    <p className="text-sm text-gray-600">Data Visualization & Analytics</p>
+                    <h4 className="text-lg text-gray-800 mb-2">Tableau Internship</h4>
+                    <p className="text-sm text-gray-600">Create impactful data visualizations</p>
                   </div>
 
-                  {/* Hive */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Code className="h-8 w-8 text-yellow-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">Hive</h4>
-                    <p className="text-sm text-gray-600">Big Data Warehouse Software</p>
+                    <h4 className="text-lg text-gray-800 mb-2">Hive Internship</h4>
+                    <p className="text-sm text-gray-600">Big data processing and analytics</p>
                   </div>
 
-                  {/* Cloudera */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Cloud className="h-8 w-8 text-purple-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">Cloudera</h4>
-                    <p className="text-sm text-gray-600">Enterprise Data Cloud Platform</p>
+                    <h4 className="text-lg text-gray-800 mb-2">Cloudera Internship</h4>
+                    <p className="text-sm text-gray-600">Enterprise data cloud solutions</p>
                   </div>
 
-                  {/* Informatica */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Cog className="h-8 w-8 text-red-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">Informatica</h4>
-                    <p className="text-sm text-gray-600">Data Integration & Management</p>
+                    <h4 className="text-lg text-gray-800 mb-2">Informatica Internship</h4>
+                    <p className="text-sm text-gray-600">Data integration projects</p>
                   </div>
 
-                  {/* SAP NetWeaver */}
                   <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
                     <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Building2 className="h-8 w-8 text-indigo-600" />
                     </div>
-                    <h4 className="text-lg text-gray-800 mb-2">SAP NetWeaver</h4>
-                    <p className="text-sm text-gray-600">Enterprise Application Platform</p>
+                    <h4 className="text-lg text-gray-800 mb-2">SAP NetWeaver Internship</h4>
+                    <p className="text-sm text-gray-600">Enterprise application development</p>
                   </div>
                 </div>
               </div>
 
               {/* Functional Consulting Arena */}
               <div className="mt-12">
-                <h3 className="text-2xl text-gray-800 mb-8">Functional Consulting Arena</h3>
+                <h3 className="text-2xl text-gray-800 mb-8">Functional Consulting Internships</h3>
                 
                 <div className="grid md:grid-cols-4 gap-6">
-                  {/* E-commerce */}
                   <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <ShoppingCart className="h-10 w-10 text-green-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">E-commerce</h4>
-                    <p className="text-xs text-gray-600">Digital Commerce Solutions</p>
+                    <h4 className="text-gray-800 mb-2">E-commerce Internship</h4>
+                    <p className="text-xs text-gray-600">Develop digital commerce platforms</p>
                   </div>
 
-                  {/* Manufacturing */}
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Factory className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Manufacturing</h4>
-                    <p className="text-xs text-gray-600">Industrial Operations</p>
+                    <h4 className="text-gray-800 mb-2">Manufacturing Internship</h4>
+                    <p className="text-xs text-gray-600">Optimize industrial operations</p>
                   </div>
 
-                  {/* Retail */}
                   <div className="bg-gradient-to-br from-red-50 to-red-100 border border-red-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Building2 className="h-10 w-10 text-red-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Retail</h4>
-                    <p className="text-xs text-gray-600">Customer Experience</p>
+                    <h4 className="text-gray-800 mb-2">Retail Internship</h4>
+                    <p className="text-xs text-gray-600">Enhance customer experiences</p>
                   </div>
 
-                  {/* Life Science */}
                   <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Heart className="h-10 w-10 text-purple-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Life Science</h4>
-                    <p className="text-xs text-gray-600">Healthcare & Research</p>
+                    <h4 className="text-gray-800 mb-2">Life Science Internship</h4>
+                    <p className="text-xs text-gray-600">Support healthcare innovations</p>
                   </div>
 
-                  {/* Insurance */}
                   <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Shield className="h-10 w-10 text-orange-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Insurance</h4>
-                    <p className="text-xs text-gray-600">Risk Management</p>
+                    <h4 className="text-gray-800 mb-2">Insurance Internship</h4>
+                    <p className="text-xs text-gray-600">Improve risk management systems</p>
                   </div>
 
-                  {/* Banking */}
                   <div className="bg-gradient-to-br from-teal-50 to-teal-100 border border-teal-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Landmark className="h-10 w-10 text-teal-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Banking</h4>
-                    <p className="text-xs text-gray-600">Financial Services</p>
+                    <h4 className="text-gray-800 mb-2">Banking Internship</h4>
+                    <p className="text-xs text-gray-600">Advance financial services</p>
                   </div>
 
-                  {/* Logistics */}
                   <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Truck className="h-10 w-10 text-yellow-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Logistics</h4>
-                    <p className="text-xs text-gray-600">Supply Chain Management</p>
+                    <h4 className="text-gray-800 mb-2">Logistics Internship</h4>
+                    <p className="text-xs text-gray-600">Streamline supply chains</p>
                   </div>
 
-                  {/* Warehousing */}
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow text-center">
                     <Package className="h-10 w-10 text-gray-600 mx-auto mb-3" />
-                    <h4 className="text-gray-800 mb-2">Warehousing</h4>
-                    <p className="text-xs text-gray-600">Inventory Management</p>
+                    <h4 className="text-gray-800 mb-2">Warehousing Internship</h4>
+                    <p className="text-xs text-gray-600">Optimize inventory systems</p>
                   </div>
                 </div>
               </div>
 
-              {/* Training Benefits */}
+              {/* Internship Benefits */}
               <div className="mt-12 bg-gradient-to-r from-red-50 to-blue-50 p-6 rounded-lg text-center">
-                <h4 className="text-xl text-blue-800 mb-3">Why Choose Our Training Programs?</h4>
+                <h4 className="text-xl text-blue-800 mb-3">Why Choose Our Internships?</h4>
                 <p className="text-blue-700 leading-relaxed mb-4">
-                  Our training programs are designed to provide hands-on experience with industry-leading technologies. 
-                  We focus on practical learning with real-world projects, expert mentorship, and comprehensive skill development 
-                  to ensure our trainees are job-ready upon completion.
+                  Our real-time internships offer practical experience on live industry projects, 
+                  mentorship from experts, and the chance to build a professional portfolio to kickstart your career.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6">
                   <div className="text-center">
                     <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                       <BookOpen className="h-6 w-6 text-blue-600" />
                     </div>
-                    <h5 className="text-sm text-gray-800 mb-1">Hands-on Learning</h5>
-                    <p className="text-xs text-gray-600">Practical projects with real-world applications</p>
+                    <h5 className="text-sm text-gray-800 mb-1">Real-World Projects</h5>
+                    <p className="text-xs text-gray-600">Work on live industry challenges</p>
                   </div>
                   <div className="text-center">
                     <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                       <Users className="h-6 w-6 text-green-600" />
                     </div>
                     <h5 className="text-sm text-gray-800 mb-1">Expert Mentorship</h5>
-                    <p className="text-xs text-gray-600">Learn from industry professionals</p>
+                    <p className="text-xs text-gray-600">Guidance from industry leaders</p>
                   </div>
                   <div className="text-center">
                     <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                       <GraduationCap className="h-6 w-6 text-purple-600" />
                     </div>
-                    <h5 className="text-sm text-gray-800 mb-1">Job Ready Skills</h5>
-                    <p className="text-xs text-gray-600">Comprehensive skill development programs</p>
+                    <h5 className="text-sm text-gray-800 mb-1">Career Boost</h5>
+                    <p className="text-xs text-gray-600">Build a professional portfolio</p>
                   </div>
                 </div>
               </div>
@@ -435,32 +420,32 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
             {/* Right Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-8 space-y-6">
-                {/* Training Statistics */}
+                {/* Internship Statistics */}
                 <div className="bg-white border border-gray-200 p-6 rounded-lg">
-                  <h4 className="text-lg text-gray-800 mb-4">Training Programs</h4>
+                  <h4 className="text-lg text-gray-800 mb-4">Internship Programs</h4>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">Total Programs</span>
+                      <span className="text-sm text-gray-600">Total Internships</span>
                       <span className="text-2xl text-blue-500">7+</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">Technologies</span>
+                      <span className="text-sm text-gray-600">Technologies Covered</span>
                       <span className="text-2xl text-green-500">25+</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600">Success Rate</span>
-                      <span className="text-2xl text-purple-500">95%</span>
+                      <span className="text-sm text-gray-600">Placement Rate</span>
+                      <span className="text-2xl text-purple-500">90%</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Duration</span>
-                      <span className="text-lg text-red-500">3-6 Months</span>
+                      <span className="text-lg text-red-500">2-4 Months</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Popular Technologies */}
                 <div className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-lg">
-                  <h4 className="text-lg text-gray-800 mb-4">Popular Technologies</h4>
+                  <h4 className="text-lg text-gray-800 mb-4">Popular Internship Technologies</h4>
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">AWS</span>
                     <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">Docker</span>
@@ -473,53 +458,53 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                   </div>
                 </div>
 
-                {/* Prerequisites */}
+                {/* Internship Requirements */}
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg">
-                  <h4 className="text-lg text-gray-800 mb-4">Prerequisites</h4>
+                  <h4 className="text-lg text-gray-800 mb-4">Internship Requirements</h4>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">Self Starter Attitude</span>
+                      <span className="text-sm text-gray-700">Enthusiastic and self-motivated</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">Proactive Learning</span>
+                      <span className="text-sm text-gray-700">Ability to learn independently</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">Google & YouTube Skills</span>
+                      <span className="text-sm text-gray-700">Familiarity with online resources</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">Cloud Account Access</span>
+                      <span className="text-sm text-gray-700">Access to cloud platforms</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CheckCircle className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm text-gray-700">Basic Programming Knowledge</span>
+                      <span className="text-sm text-gray-700">Basic coding skills</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Training Schedule */}
+                {/* Internship Schedule */}
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg">
-                  <h4 className="text-lg text-gray-800 mb-4">Training Schedule</h4>
+                  <h4 className="text-lg text-gray-800 mb-4">Internship Schedule</h4>
                   <div className="space-y-2 text-sm text-gray-700">
                     <div className="flex justify-between">
                       <span>Weekdays</span>
-                      <span>6:00 PM - 9:00 PM</span>
+                      <span>4:00 PM - 8:00 PM</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Weekends</span>
-                      <span>10:00 AM - 6:00 PM</span>
+                      <span>9:00 AM - 3:00 PM</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Duration</span>
-                      <span>3-6 Months</span>
+                      <span>2-4 Months</span>
                     </div>
                     <div className="mt-3 pt-3 border-t border-green-200">
                       <div className="flex items-center space-x-2">
                         <Clock className="h-4 w-4 text-green-600" />
-                        <span className="text-xs text-gray-600">Flexible timing available</span>
+                        <span className="text-xs text-gray-600">Flexible schedules available</span>
                       </div>
                     </div>
                   </div>
@@ -529,12 +514,12 @@ export default function TrainingPage({ handleLogoClick, onNavigate }) {
                 <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
                   <div className="text-center">
                     <GraduationCap className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Ready to Start Learning?</h4>
+                    <h4 className="text-lg mb-2">Ready to Kickstart Your Career?</h4>
                     <p className="text-sm text-gray-300 mb-4">
-                      Join our comprehensive training programs today
+                      Apply for our real-time internships today
                     </p>
                     <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
-                      Enroll Now
+                      Apply Now
                     </Button>
                   </div>
                 </div>

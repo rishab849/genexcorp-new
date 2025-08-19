@@ -11,6 +11,7 @@ export default function Header({ onNavigate, handleLogoClick, currentPage }) {
   // Define which pages belong to each dropdown
   const isHomeActive = ['home', 'objective', 'portfolio'].includes(currentPage);
   const isServicesActive = ['productdevelopment', 'itconsulting', 'itresourcing'].includes(currentPage);
+  const isTrainingActive = ['training', 'realtimeinternships', 'corporatetraining'].includes(currentPage);
 
   return (
     <header className="w-full bg-slate-50 border-b border-gray-200 px-8 py-6 relative z-50">
@@ -85,29 +86,29 @@ export default function Header({ onNavigate, handleLogoClick, currentPage }) {
           </div>
 
           {/* Training with dropdown */}
-          <div className="relative group flex items-center space-x-1 hover:text-red-500 transition-colors cursor-pointer">
+          <div className={`relative group flex items-center space-x-1 ${isTrainingActive ? 'text-red-500' : 'hover:text-red-500'} transition-colors cursor-pointer`}>
             <span>Training</span>
             <ChevronDown className="h-3 w-3" />
             {/* Training Dropdown Menu */}
             <div className="absolute left-0 top-full mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transform -translate-y-2 transition-all duration-200 z-50">
-              <a
-                href="#"
-                className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors border-b border-gray-100"
+              <button
+                onClick={() => onNavigate('training')}
+                className={`block px-4 py-3 ${currentPage === 'training' ? 'text-red-500 bg-red-50' : 'text-gray-700'} hover:bg-red-50 hover:text-red-500 transition-colors border-b border-gray-100`}
               >
                 Training / Internships
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors border-b border-gray-100"
+              </button>
+              <button
+                onClick={() => onNavigate('realtimeinternships')}
+                className={`block px-4 py-3 ${currentPage === 'realtimeinternships' ? 'text-red-500 bg-red-50' : 'text-gray-700'} hover:bg-red-50 hover:text-red-500 transition-colors border-b border-gray-100`}
               >
                 Real Time Internships
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors"
+              </button>
+              <button
+                onClick={() => onNavigate('corporatetraining')}
+                className={`block px-4 py-3 ${currentPage === 'corporatetraining' ? 'text-red-500 bg-red-50' : 'text-gray-700'} hover:bg-red-50 hover:text-red-500 transition-colors`}
               >
                 Corporate Training
-              </a>
+              </button>
             </div>
           </div>
 

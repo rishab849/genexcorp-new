@@ -28,6 +28,9 @@ export default function ProductDevelopment() {
         <div className="max-w-7xl mx-auto">
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
+            <h1 className="text-5xl text-gray-800 mb-6">
+                  Product <span className="text-red-500">Development</span>
+                </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               At GenexCorp, we turn your vision into reality with innovative product development solutions tailored to your business needs
             </h2>
@@ -38,9 +41,7 @@ export default function ProductDevelopment() {
             <div className="lg:col-span-3 space-y-8 text-gray-700 leading-relaxed">
               {/* Product Development Overview */}
               <div>
-                <h1 className="text-5xl text-gray-800 mb-6">
-                  Product <span className="text-red-500">Development</span>
-                </h1>
+                
                 <p>
                   At GenexCorp, our product development services are designed to deliver end-to-end solutions that drive business growth and innovation. From ideation to deployment, we partner with you to create scalable, secure, and user-focused products that meet the demands of today’s dynamic digital landscape.
                 </p>

@@ -4,7 +4,9 @@ import Portfolio from './Portfolio';
 import ProductDevelopment from './ProductDevelopment';
 import ITConsulting from './ITConsulting';
 import ITResourcing from './ITResourcing';
-import traininginternship from './TrainingPage';
+import TrainingPage from './TrainingPage';
+import CorporateTraining from './CorporateTraining';
+import RealTimeInternships from './RealTimeInternships';
 import Jobs from './Jobs';
 import Support from './Support';
 import Header from './Header';
@@ -103,8 +105,17 @@ export default function App() {
     case 'itresourcing':
       content = <ITResourcing />;
       break;
+    case 'training':
+      content = <TrainingPage handleLogoClick={handleLogoClick} />;
+      break;
+    case 'realtimeinternships':
+      content = <RealTimeInternships handleLogoClick={handleLogoClick} />;
+      break;
+    case 'corporatetraining':
+      content = <CorporateTraining handleLogoClick={handleLogoClick} />;
+      break;
     case 'jobs':
-      content = <Jobs  />;
+      content = <Jobs />;
       break;
     case 'support':
       content = <Support />;
@@ -235,7 +246,7 @@ export default function App() {
                     <li>• Embedded mapping objects for visualization</li>
                   </ul>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg text-left">
+                <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
                   <h3 className="text-2xl mb-4 text-gray-800">Our Achievements</h3>
                   <ul className="space-y-2 text-gray-600">
                     <li>• Successfully trained over 500 professionals in BI analytics</li>

@@ -22,6 +22,9 @@ export default function Portfolio() {
       <div className="flex-1 px-8 py-16">
         <div className="max-w-7xl mx-auto">
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
+            <div className="mb-16">
+            <h1 className="text-5xl text-gray-800 mb-6"> <span className="text-red-500">Portfolio</span></h1>
+          </div>
             <h2 className="text-3xl text-blue-600 mb-4">
               For GenexCorp, "Welcome to possibilities of non-possibilities" is more than a slogan - it reflects our approach to every engagement
             </h2>

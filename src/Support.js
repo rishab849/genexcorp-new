@@ -33,6 +33,9 @@ export default function Support() {
         <div className="max-w-7xl mx-auto">
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
+            <h1 className="text-5xl text-gray-800 mb-6">
+                  <span className="text-red-500">Support</span>
+                </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               Learn to get in touch with the silence within yourself, and know that everything in life has purpose. There are no mistakes, no coincidences, all events are blessings given to us to learn from.
             </h2>

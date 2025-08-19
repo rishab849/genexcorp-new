@@ -33,6 +33,9 @@ export default function ITResourcing() {
         <div className="max-w-7xl mx-auto">
           {/* Blue Quote Section */}
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
+            <h1 className="text-5xl text-gray-800 mb-6">
+                  IT <span className="text-red-500">Resourcing</span>
+                </h1>
             <h2 className="text-3xl text-blue-600 mb-4">
               Everyone that is part of GenexCorp is passionate about how IT can help transform your business, which is why we work the way we do and why we are so successful at what we do
             </h2>
@@ -43,9 +46,7 @@ export default function ITResourcing() {
             <div className="lg:col-span-3 space-y-8 text-gray-700 leading-relaxed">
               {/* IT Resourcing Introduction */}
               <div className="space-y-6">
-                <h1 className="text-5xl text-gray-800 mb-6">
-                  IT <span className="text-red-500">Resourcing</span>
-                </h1>
+                
                 <p>
                   Our team includes a range of technical, functional and business analyst specialists such as business blueprint (BPM) creators, 
                   Business Analyst (KPI designers), developers for specific tools, user interface designers and support engineers. We also have 
