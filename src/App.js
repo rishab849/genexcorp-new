@@ -161,10 +161,10 @@ export default function App() {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
-                      <div className="absolute top-4 left-4">
-                        <h2 className="text-4xl font-bold text-white max-w-md">{slide.title}</h2>
+                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+                        <h2 className="text-4xl font-bold text-white max-w-md text-center">{slide.title}</h2>
                       </div>
-                      <div className="absolute top-1/2 transform -translate-y-1/2 left-1/2 transform -translate-x-1/2">
+                      <div className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                         <p className="text-xl text-gray-300 max-w-md text-center">{slide.subtitle}</p>
                       </div>
                     </div>
