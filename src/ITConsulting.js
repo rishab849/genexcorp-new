@@ -291,10 +291,10 @@ export default function ITConsulting() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-700">Senior Consultants</span>
-                      <span className="text-sm text-blue-600">70%</span>
+                      <span className="text-sm text-blue-600">80%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: '70%' }}></div>
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: '80%' }}></div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-700">Mid-Level Consultants</span>

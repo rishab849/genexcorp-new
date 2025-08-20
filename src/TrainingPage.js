@@ -1,10 +1,72 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from "./components/ui/button";
 import { ArrowRight, ChevronDown, Users, Target, Award, ChevronLeft, ChevronRight, Briefcase, TrendingUp, Globe, Home, ChevronRight as ChevronRightSmall, Code, Database, Cloud, Smartphone, ShoppingCart, Cog, CheckCircle, Star, Zap, Building2, Truck, Factory, Heart, Shield, Landmark, Package, Layers, Server, GitBranch, Cpu, MonitorSpeaker, Rocket, MessageSquare, Bot, Settings, Network, UserPlus, Clock, Search, PieChart, Calendar, MapPin, Phone, Send, HeadphonesIcon, BookOpen, GraduationCap, Play, CheckSquare, FileText, Monitor, Globe2, Wrench } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import genexcorpLogo from './assets/genexcorp-logo.png';
-import { metrics } from './metrics';
 
 export default function TrainingPage({ handleLogoClick, onNavigate }) {
+  const [metrics, setMetrics] = useState({
+    training: {
+      totalPrograms: '...',
+      technologies: '...',
+      successRate: '...',
+      duration: '...',
+    }
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [programs, technologies, success, duration] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=50&max=150')
+            .then(res => {
+              console.log('Total Programs response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Total Programs data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=15&max=25')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=80&max=90')
+            .then(res => res.json())
+            .then(data => data[0].random + '%'),
+          fetch('https://csrng.net/csrng/csrng.php?min=2&max=4')
+            .then(res => res.json())
+            .then(data => data[0].random + ' months'),
+        ]);
+
+        console.log('Fetched values:', { programs, technologies, success, duration });
+
+        setMetrics({
+          training: {
+            totalPrograms: programs,
+            technologies: technologies,
+            successRate: success,
+            duration: duration,
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          training: {
+            totalPrograms: Math.floor(Math.random() * 100) + 50,
+            technologies: Math.floor(Math.random() * 10) + 15,
+            successRate: Math.floor(Math.random() * 10) + 80 + '%',
+            duration: Math.floor(Math.random() * 3) + 2 + ' months',
+          }
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
+
   return (
     <main className="flex flex-1">
       {/* Content Area */}

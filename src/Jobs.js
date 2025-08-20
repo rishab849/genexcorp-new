@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "./components/ui/button";
 import {
   ArrowRight,
@@ -40,6 +40,67 @@ export default function Jobs() {
     resume: null,
     coverLetter: "",
   });
+  const [metrics, setMetrics] = useState({
+    jobs: {
+      totalPositions: '...',
+      developmentRoles: '...',
+      cloudDevOpsRoles: '...',
+      experienceLevel: '...',
+    }
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [positions, devRoles, cloudRoles, experience] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=3&max=10')
+            .then(res => {
+              console.log('Total Positions response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Total Positions data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=2&max=3')
+            .then(res => res.json())
+            .then(data => data[0].random + ' Years'),
+        ]);
+
+        console.log('Fetched values:', { positions, devRoles, cloudRoles, experience });
+
+        setMetrics({
+          jobs: {
+            totalPositions: positions,
+            developmentRoles: devRoles,
+            cloudDevOpsRoles: cloudRoles,
+            experienceLevel: experience,
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          jobs: {
+            totalPositions: Math.floor(Math.random() * 8) + 3,
+            developmentRoles: Math.floor(Math.random() * 4) + 1,
+            cloudDevOpsRoles: Math.floor(Math.random() * 4) + 1,
+            experienceLevel: Math.floor(Math.random() * 2) + 2 + ' Years',
+          }
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
 
   const handleApplyClick = (jobTitle) => {
     setSelectedJob(jobTitle);
@@ -357,19 +418,19 @@ export default function Jobs() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Total Positions</span>
-                      <span className="text-2xl text-blue-500">3</span>
+                      <span className="text-2xl text-blue-500">{metrics.jobs.totalPositions}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Development Roles</span>
-                      <span className="text-2xl text-green-500">2</span>
+                      <span className="text-2xl text-green-500">{metrics.jobs.developmentRoles}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Cloud/DevOps Roles</span>
-                      <span className="text-2xl text-purple-500">2</span>
+                      <span className="text-2xl text-purple-500">{metrics.jobs.cloudDevOpsRoles}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Experience Level</span>
-                      <span className="text-lg text-red-500">2-3 Years</span>
+                      <span className="text-lg text-red-500">{metrics.jobs.experienceLevel}</span>
                     </div>
                   </div>
                 </div>

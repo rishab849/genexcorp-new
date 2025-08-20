@@ -120,14 +120,19 @@ export default function CorporateTraining() {
               </div>
 
               {/* Download Section */}
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6">
-                <div className="flex items-center space-x-3">
-                  <Download className="h-5 w-5 text-orange-500" />
-                  <a href="#" className="text-orange-500 hover:text-orange-600 transition-colors">
-                    Download General Course outline
-                  </a>
-                </div>
-              </div>
+<div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-6">
+  <div className="flex items-center space-x-3">
+    <Download className="h-5 w-5 text-orange-500" />
+    <a 
+      href="https://www.genexcorp.com/images/GeneralCourseOutline.pdf" 
+      className="text-orange-500 hover:text-orange-600 transition-colors"
+      target="_blank"
+      rel="noopener noreferrer" // Added for security best practices
+    >
+      Download General Course outline
+    </a>
+  </div>
+</div>
 
               {/* Technology Consulting Arena */}
               <div className="mt-12">

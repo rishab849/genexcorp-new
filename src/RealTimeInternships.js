@@ -1,10 +1,72 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from "./components/ui/button";
 import { ArrowRight, ChevronDown, Users, Target, Award, ChevronLeft, ChevronRight, Briefcase, TrendingUp, Globe, Home, ChevronRight as ChevronRightSmall, Code, Database, Cloud, Smartphone, ShoppingCart, Cog, CheckCircle, Star, Zap, Building2, Truck, Factory, Heart, Shield, Landmark, Package, Layers, Server, GitBranch, Cpu, MonitorSpeaker, Rocket, MessageSquare, Bot, Settings, Network, UserPlus, Clock, Search, PieChart, Calendar, MapPin, Phone, Send, HeadphonesIcon, BookOpen, GraduationCap, Play, CheckSquare, FileText, Monitor, Globe2, Wrench } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import genexcorpLogo from './assets/genexcorp-logo.png';
-import { metrics } from './metrics';
 
 export default function InternshipPage({ handleLogoClick, onNavigate }) {
+  const [metrics, setMetrics] = useState({
+    internship: {
+      totalInternships: '...',
+      technologies: '...',
+      placementRate: '...',
+      duration: '...',
+    }
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [internships, technologies, placement, duration] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=100&max=200')
+            .then(res => {
+              console.log('Total Internships response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Total Internships data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=20&max=30')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=85&max=95')
+            .then(res => res.json())
+            .then(data => data[0].random + '%'),
+          fetch('https://csrng.net/csrng/csrng.php?min=3&max=6')
+            .then(res => res.json())
+            .then(data => data[0].random + ' months'),
+        ]);
+
+        console.log('Fetched values:', { internships, technologies, placement, duration });
+
+        setMetrics({
+          internship: {
+            totalInternships: internships,
+            technologies: technologies,
+            placementRate: placement,
+            duration: duration,
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          internship: {
+            totalInternships: Math.floor(Math.random() * 100) + 100,
+            technologies: Math.floor(Math.random() * 10) + 20,
+            placementRate: Math.floor(Math.random() * 10) + 85 + '%',
+            duration: Math.floor(Math.random() * 4) + 3 + ' months',
+          }
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
+
   return (
     <main className="flex flex-1">
       {/* Content Area */}
@@ -213,7 +275,7 @@ export default function InternshipPage({ handleLogoClick, onNavigate }) {
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <MessageSquare className="h-4 w-4 text-indigo-600" />
-                      <span>Multi-channel integration</span>
+                      <span preliminaries>Multi-channel integration</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <MessageSquare className="h-4 w-4 text-indigo-600" />

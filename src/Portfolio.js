@@ -1,4 +1,7 @@
-import { Button } from "./components/ui/button";
+import React, { useState, useEffect } from 'react';
+import {
+  Button,
+} from "./components/ui/button";
 import {
   Database,
   TrendingUp,
@@ -15,17 +18,78 @@ import {
   Package,
   Briefcase,
 } from "lucide-react";
-import { metrics } from './metrics';
 
 export default function Portfolio() {
+  const [metrics, setMetrics] = useState({
+    portfolio: {
+      technologyPartners: '...',
+      industryDomains: '...',
+      solutionsDelivered: '...',
+      activeProjects: '...',
+    }
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [partners, domains, solutions, projects] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=50&max=100')
+            .then(res => {
+              console.log('Technology Partners response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Technology Partners data:', data);
+              return data[0].random;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=10&max=20')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=300&max=500')
+            .then(res => res.json())
+            .then(data => data[0].random),
+          fetch('https://csrng.net/csrng/csrng.php?min=20&max=50')
+            .then(res => res.json())
+            .then(data => data[0].random),
+        ]);
+
+        console.log('Fetched values:', { partners, domains, solutions, projects });
+
+        setMetrics({
+          portfolio: {
+            technologyPartners: partners,
+            industryDomains: domains,
+            solutionsDelivered: solutions,
+            activeProjects: projects,
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          portfolio: {
+            technologyPartners: Math.floor(Math.random() * 50) + 50,
+            industryDomains: Math.floor(Math.random() * 10) + 10,
+            solutionsDelivered: Math.floor(Math.random() * 200) + 300,
+            activeProjects: Math.floor(Math.random() * 30) + 20,
+          }
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
+
   return (
     <main className="flex flex-1">
       <div className="flex-1 px-8 py-16">
         <div className="max-w-7xl mx-auto">
           <div className="border-l-4 border-blue-500 pl-8 mb-12">
             <div className="mb-16">
-            <h1 className="text-5xl text-gray-800 mb-6"> <span className="text-red-500">Portfolio</span></h1>
-          </div>
+              <h1 className="text-5xl text-gray-800 mb-6"> <span className="text-red-500">Portfolio</span></h1>
+            </div>
             <h2 className="text-3xl text-blue-600 mb-4">
               For GenexCorp, "Welcome to possibilities of non-possibilities" is more than a slogan - it reflects our approach to every engagement
             </h2>

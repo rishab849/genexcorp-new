@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowRight,
   Users,
@@ -38,6 +38,67 @@ export default function Support() {
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [metrics, setMetrics] = useState({
+    support: {
+      responseTime: '...',
+      resolutionRate: '...',
+      clientSatisfaction: '...',
+      supportChannels: '...',
+    }
+  });
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        console.log('Fetching metrics...');
+        
+        const [responseTime, resolutionRate, clientSatisfaction, supportChannels] = await Promise.all([
+          fetch('https://csrng.net/csrng/csrng.php?min=1&max=2')
+            .then(res => {
+              console.log('Response Time response status:', res.status);
+              return res.json();
+            })
+            .then(data => {
+              console.log('Response Time data:', data);
+              return `< ${data[0].random} Hours`;
+            }),
+          fetch('https://csrng.net/csrng/csrng.php?min=95&max=98')
+            .then(res => res.json())
+            .then(data => data[0].random + '%'),
+          fetch('https://csrng.net/csrng/csrng.php?min=48&max=50')
+            .then(res => res.json())
+            .then(data => (data[0].random / 10).toFixed(1) + '/5'),
+          fetch('https://csrng.net/csrng/csrng.php?min=5&max=7')
+            .then(res => res.json())
+            .then(data => data[0].random + '+'),
+        ]);
+
+        console.log('Fetched values:', { responseTime, resolutionRate, clientSatisfaction, supportChannels });
+
+        setMetrics({
+          support: {
+            responseTime: responseTime,
+            resolutionRate: resolutionRate,
+            clientSatisfaction: clientSatisfaction,
+            supportChannels: supportChannels,
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching metrics:', error);
+        // Set fallback random values if API fails
+        setMetrics({
+          support: {
+            responseTime: `< ${Math.floor(Math.random() * 2) + 1} Hours`,
+            resolutionRate: Math.floor(Math.random() * 4) + 95 + '%',
+            clientSatisfaction: (Math.floor(Math.random() * 3) + 48) / 10 + '/5',
+            supportChannels: Math.floor(Math.random() * 3) + 5 + '+',
+          }
+        });
+      }
+    };
+
+    fetchMetrics();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -381,19 +442,19 @@ export default function Support() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Response Time</span>
-                      <span className="text-lg sm:text-xl text-blue-500">&lt; 2 Hours</span>
+                      <span className="text-lg sm:text-xl text-blue-500">{metrics.support.responseTime}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Resolution Rate</span>
-                      <span className="text-lg sm:text-xl text-green-500">98%</span>
+                      <span className="text-lg sm:text-xl text-green-500">{metrics.support.resolutionRate}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Client Satisfaction</span>
-                      <span className="text-lg sm:text-xl text-purple-500">4.9/5</span>
+                      <span className="text-lg sm:text-xl text-purple-500">{metrics.support.clientSatisfaction}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Support Channels</span>
-                      <span className="text-lg sm:text-xl text-red-500">5+</span>
+                      <span className="text-lg sm:text-xl text-red-500">{metrics.support.supportChannels}</span>
                     </div>
                   </div>
                 </div>
@@ -406,7 +467,7 @@ export default function Support() {
                       <Mail className="h-4 w-4 text-blue-600" />
                       <span className="text-sm text-gray-700">Email Support</span>
                     </div>
-                    <div className="flex процента items-center space-x-3">
+                    <div className="flex items-center space-x-3">
                       <Phone className="h-4 w-4 text-blue-600" />
                       <span className="text-sm text-gray-700">Phone Support</span>
                     </div>
