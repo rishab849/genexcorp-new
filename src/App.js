@@ -44,7 +44,7 @@ export default function App() {
         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?fit=crop&w=1200&h=600&crop=center",
       title: "Strategic IT Consulting Solutions",
       subtitle:
-        "Everyone that is a part of Genexcoro is passionate about how IT can help transform your business, which is why we workthe way we do and why we are so successful at what we do.",
+        "Everyone that is a part of Genexcoro is passionate about how IT can help transform your business, which is why we work the way we do and why we are so successful at what we do.",
       redirect: 'itconsulting',
     },
     {
@@ -60,7 +60,7 @@ export default function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 10000); // 10 seconds as per your latest code
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -152,7 +152,7 @@ export default function App() {
                   {slides.map((slide, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
+                      className={`absolute inset-0 transition-opacity duration-2000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
                     >
                       <ImageWithFallback
                         src={slide.image}
@@ -181,7 +181,10 @@ export default function App() {
                           <div>
                             <Button
                               className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
-                              onClick={() => setCurrentPage(slide.redirect)}
+                              onClick={() => {
+                                console.log('Redirecting to:', slide.redirect); // Debug log
+                                setCurrentPage(slide.redirect);
+                              }}
                             >
                               Read More
                             </Button>
