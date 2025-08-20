@@ -91,7 +91,14 @@ export default function Footer({ onNavigate }) {
               Telangana, India
             </p>
             <p className="hover:text-red-500 transition-colors cursor-pointer">📞 +91-9920779095</p>
-            <p className="hover:text-red-500 transition-colors cursor-pointer">📧 hr@genexcorp.com</p>
+            <a 
+              href="mailto:hr@genexcorp.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-red-500 transition-colors cursor-pointer"
+            >
+              📧 hr@genexcorp.com
+            </a>
           </div>
 
           <div className="flex space-x-4">

@@ -372,19 +372,7 @@ export default function CorporateTraining() {
                   </div>
                 </div>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
-                  <div className="text-center">
-                    <GraduationCap className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Start Your Journey</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Master QlikView with our comprehensive training
-                    </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
-                      Contact Us
-                    </Button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

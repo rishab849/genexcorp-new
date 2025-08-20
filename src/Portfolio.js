@@ -270,18 +270,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
-                  <div className="text-center">
-                    <Briefcase className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Ready to Partner?</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Explore how our portfolio of solutions can transform your business
-                    </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
-                      View Case Studies
-                    </Button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

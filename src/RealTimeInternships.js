@@ -548,44 +548,9 @@ export default function InternshipPage({ handleLogoClick, onNavigate }) {
                   </div>
                 </div>
 
-                {/* Internship Schedule */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg">
-                  <h4 className="text-lg text-gray-800 mb-4">Internship Schedule</h4>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    <div className="flex justify-between">
-                      <span>Weekdays</span>
-                      <span>4:00 PM - 8:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Weekends</span>
-                      <span>9:00 AM - 3:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Duration</span>
-                      <span>{metrics.internship.duration}</span>
-                    </div>
-                    <div className="mt-3 pt-3 border-t border-green-200">
-                      <div className="flex items-center space-x-2">
-                        <Clock className="h-4 w-4 text-green-600" />
-                        <span className="text-xs text-gray-600">Flexible schedules available</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
-                  <div className="text-center">
-                    <GraduationCap className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Ready to Kickstart Your Career?</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Apply for our real-time internships today
-                    </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
-                      Apply Now
-                    </Button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

@@ -313,38 +313,12 @@ export default function ITConsulting() {
                   </div>
                 </div>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
-                  <div className="text-center">
-                    <Users className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Need IT Consulting?</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Connect with our expert consultants for your next project
-                    </p>
-                    <button className="bg-red-500 hover:bg-red-600 text-white w-full px-4 py-2 rounded transition-colors">
-                      Schedule Consultation
-                    </button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
 
-          {/* Call to Action Section */}
-          <div className="mt-16 text-center bg-gradient-to-r from-red-50 to-blue-50 p-12 rounded-lg">
-            <h3 className="text-3xl text-gray-800 mb-6">Ready to Transform Your Business?</h3>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Partner with GenexCorp to leverage cutting-edge IT consulting services that drive innovation and growth.
-            </p>
-            <div className="flex justify-center space-x-6">
-              <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded transition-colors flex items-center">
-                Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
-              </button>
-              <button className="border border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4 rounded transition-colors">
-                Schedule a Consultation
-              </button>
-            </div>
-          </div>
+          
         </div>
       </div>
     </main>

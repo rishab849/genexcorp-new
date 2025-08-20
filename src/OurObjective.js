@@ -166,9 +166,7 @@ export default function OurObjective() {
                   Every project is an opportunity to demonstrate how strategic technology implementation can transform your 
                   operations, enhance your market position, and drive sustainable growth.
                 </p>
-                <Button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3">
-                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                
               </div>
             </div>
 
@@ -222,36 +220,12 @@ export default function OurObjective() {
                   </div>
                 </div>
 
-                {/* Client Success Highlight */}
-                <div className="mt-6 bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-xl">
-                  <div className="text-center">
-                    <Award className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Client Success</h4>
-                    <p className="text-sm text-gray-300">
-                      Trusted by leading enterprises worldwide for innovative solutions and exceptional results
-                    </p>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
 
-          {/* Call to Action Section */}
-          <div className="mt-16 text-center bg-gradient-to-r from-red-50 to-blue-50 p-12 rounded-lg">
-            <h3 className="text-3xl text-gray-800 mb-6">Ready to Unlock Your Business Potential?</h3>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Partner with GenexCorp to transform your technological challenges into competitive advantages 
-              and accelerate your journey toward digital excellence.
-            </p>
-            <div className="flex justify-center space-x-6">
-              <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4">
-                Start Your Transformation
-              </Button>
-              <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4">
-                Schedule a Strategic Consultation
-              </Button>
-            </div>
-          </div>
+          
         </div>
       </div>
     </main>

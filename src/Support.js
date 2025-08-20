@@ -511,19 +511,7 @@ export default function Support() {
                   </div>
                 </div>
 
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-4 sm:p-6 rounded-lg">
-                  <div className="text-center">
-                    <HeadphonesIcon className="h-8 sm:h-10 w-8 sm:w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Need Immediate Help?</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Contact our support team for instant assistance
-                    </p>
-                    <button className="bg-red-500 hover:bg-red-600 text-white w-full px-4 py-2 rounded-md">
-                      Contact Support
-                    </button>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

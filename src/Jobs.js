@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "./components/ui/button";
 import {
   ArrowRight,
@@ -48,6 +48,7 @@ export default function Jobs() {
       experienceLevel: '...',
     }
   });
+  const jobOpeningsRef = useRef(null);
 
   useEffect(() => {
     const fetchMetrics = async () => {
@@ -107,6 +108,10 @@ export default function Jobs() {
     setIsModalOpen(true);
   };
 
+  const handleScrollToJobs = () => {
+    jobOpeningsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prev) => ({
@@ -155,7 +160,7 @@ export default function Jobs() {
             {/* Left Content */}
             <div className="lg:col-span-3 space-y-8 text-gray-700 leading-relaxed">
               {/* Current Job Openings */}
-              <div className="space-y-6">
+              <div className="space-y-6" ref={jobOpeningsRef}>
                 <h3 className="text-2xl text-gray-800 mb-8">Current Job Openings</h3>
                 
                 {/* Job 1: Full Stack Developer */}
@@ -296,7 +301,7 @@ export default function Jobs() {
                     <h4 className="text-lg text-gray-800 mb-2">Cloudera</h4>
                     <p className="text-sm text-gray-600">Enterprise Data Cloud Platform</p>
                   </div>
-                  <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow text-center">
+                  <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow">
                     <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Cog className="h-8 w-8 text-red-600" />
                     </div>
@@ -398,12 +403,12 @@ export default function Jobs() {
                 <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                   Start your career with GenexCorp and work on innovative IT projects with top-tier professionals.
                 </p>
-                <div className="flex justify-center space-x-6">
-                  <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-4">
+                <div className="flex justify-center">
+                  <Button 
+                    className="bg-red-500 hover:bg-red-600 text-white px-8 py-4"
+                    onClick={handleScrollToJobs}
+                  >
                     Apply Now <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-50 px-8 py-4">
-                    Contact HR
                   </Button>
                 </div>
               </div>
@@ -502,20 +507,6 @@ export default function Jobs() {
                       <Clock className="h-4 w-4 text-green-600" />
                       <span className="text-sm text-gray-700">Response within 24-48 hours</span>
                     </div>
-                  </div>
-                </div>
-
-                {/* CTA Section */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-6 rounded-lg">
-                  <div className="text-center">
-                    <Briefcase className="h-10 w-10 text-yellow-400 mx-auto mb-3" />
-                    <h4 className="text-lg mb-2">Ready to Join Us?</h4>
-                    <p className="text-sm text-gray-300 mb-4">
-                      Start your career journey with GenexCorp today
-                    </p>
-                    <Button className="bg-red-500 hover:bg-red-600 text-white w-full">
-                      View All Jobs
-                    </Button>
                   </div>
                 </div>
               </div>

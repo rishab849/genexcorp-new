@@ -34,23 +34,26 @@ export default function App() {
     {
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?fit=crop&w=1200&h=600&crop=center",
-      title: "Ready to Transform Your Business?",
+      title: "How we Conduct Training?",
       subtitle:
-        "Join hundreds of successful companies that have revolutionized their operations with our expert consulting and innovative solutions.",
+        "Onsite at a stretch of 5 Days for Designer and Developer Technical, Fundamental and Business Oriented case study based on training schedule.",
+      redirect: 'corporatetraining',
     },
     {
       image:
         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?fit=crop&w=1200&h=600&crop=center",
       title: "Strategic IT Consulting Solutions",
       subtitle:
-        "Leverage cutting-edge technology and strategic insights to drive your business forward with our comprehensive IT consulting services.",
+        "Everyone that is a part of Genexcoro is passionate about how IT can help transform your business, which is why we workthe way we do and why we are so successful at what we do.",
+      redirect: 'itconsulting',
     },
     {
       image:
         "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop&crop=center",
-      title: "Professional Training & Development",
+      title: "Build your Career in Analytics ",
       subtitle:
-        "Empower your workforce with industry-leading training programs designed to enhance skills and drive organizational excellence.",
+        "People who are having hands on experience in any technology .NET, JAVA, any Database, SQL can take this course. Online composite 50 hours classroom training, including Practical Business cases.",
+      redirect: 'training',
     },
   ];
 
@@ -126,8 +129,7 @@ export default function App() {
           <div className="flex-1 flex flex-col items-center px-8 py-16">
             <div className="max-w-7xl w-full text-center">
               <h1 className="text-6xl leading-tight text-gray-800 mb-6">
-                Innovative{" "}
-                <span className="text-red-500">Corporate Solutions</span>
+                Innovative <span className="text-red-500">Corporate Solutions</span>
                 <br />
                 & <span className="text-red-500">Strategic Growth</span>
               </h1>
@@ -136,18 +138,15 @@ export default function App() {
                 help transform your business...
               </p>
               <div className="flex items-center justify-center space-x-8 mb-16">
-                <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md">
+                <Button 
+                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md"
+                  onClick={() => setCurrentPage('productdevelopment')}
+                >
                   Get Started
                 </Button>
-                <button
-                  onClick={() => setCurrentPage('productdevelopment')}
-                  className="flex items-center text-red-500 hover:text-red-600"
-                >
-                  <ArrowRight className="mr-2 h-4 w-4" /> See Our Services
-                </button>
               </div>
 
-              {/* Slider */}
+              {/* Updated Slider */}
               <div className="relative w-full max-w-full mx-auto mb-16">
                 <div className="relative h-96 rounded-2xl overflow-hidden">
                   {slides.map((slide, index) => (
@@ -161,14 +160,38 @@ export default function App() {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
-                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-                        <h2 className="text-4xl font-bold text-white max-w-md text-center">{slide.title}</h2>
-                      </div>
-                      <div className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <p className="text-xl text-gray-300 max-w-md text-center">{slide.subtitle}</p>
+                      
+                      {/* Content Container */}
+                      <div className="absolute inset-0 flex items-center px-16">
+                        {/* Title on the left */}
+                        <div className="w-1/3">
+                          <h2 className="text-4xl font-bold text-white text-left leading-tight">
+                            {slide.title}
+                          </h2>
+                        </div>
+                        
+                        {/* Subtitle and Button in the center-right area */}
+                        <div className="w-2/3 flex items-center justify-center space-x-8 pl-8">
+                          <div className="flex-1 max-w-md">
+                            <p className="text-xl text-gray-300 text-center leading-relaxed">
+                              {slide.subtitle}
+                            </p>
+                          </div>
+                          
+                          <div>
+                            <Button
+                              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                              onClick={() => setCurrentPage(slide.redirect)}
+                            >
+                              Read More
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   ))}
+                  
+                  {/* Navigation buttons */}
                   <button
                     onClick={prevSlide}
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
@@ -181,6 +204,8 @@ export default function App() {
                   >
                     <ChevronRight className="h-6 w-6 text-white" />
                   </button>
+                  
+                  {/* Dots indicator */}
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
                     {slides.map((_, index) => (
                       <button
@@ -193,67 +218,109 @@ export default function App() {
                 </div>
               </div>
 
+              {/* Four Points with Hyperlinks */}
               <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">Services</h3>
+                  <h3 className="text-xl mb-4 text-gray-800">
+                    <a href="#" onClick={() => setCurrentPage('itresourcing')} className="text-red-500 hover:text-red-600">
+                      Services
+                    </a>
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Since we understand your delivery, your participants 
-                    will be ready to take any challenge in Analytics within 
-                    few days after training, with the curriculum we created, 
-                    for experienced BI guys and relatively new one to understand.
+                    Since we understand your delivery, your participants will be ready to take any challenge in Analytics within few days after training, with the curriculum we created, for experienced BI guys and relatively new one to understand.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">Trainings / Internships</h3>
+                  <h3 className="text-xl mb-4 text-gray-800">
+                    <a href="#" onClick={() => setCurrentPage('training')} className="text-red-500 hover:text-red-600">
+                      Trainings / Internships
+                    </a>
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Nobody would believe what is called need based training approach 
-                    unless experienced. If you are really looking to take your 
-                    career into BI and Analytics, this is the right place for you 
-                    to get adopted with the foundational understanding.
+                    Nobody would believe what is called need based training approach unless experienced. If you are really looking to take your career into BI and Analytics, this is the right place for you to get adopted with the foundational understanding.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">Consulting</h3>
+                  <h3 className="text-xl mb-4 text-gray-800">
+                    <a href="#" onClick={() => setCurrentPage('itconsulting')} className="text-red-500 hover:text-red-600">
+                      Consulting
+                    </a>
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Leadership with Passion for Analytics –We change the way Organizations 
-                    looks at their Business. With the ever growing need of Comprehensive 
-                    Business Intelligence, organizations need to have talent which 
-                    is cost effective. We are the one of those rare, 
-                    who can solve analytic issues.
+                    Leadership with Passion for Analytics –We change the way Organizations looks at their Business. With the ever growing need of Comprehensive Business Intelligence, organizations need to have talent which is cost effective. We are the one of those rare, who can solve analytic issues.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">Product Development</h3>
+                  <h3 className="text-xl mb-4 text-gray-800">
+                    <a href="#" onClick={() => setCurrentPage('productdevelopment')} className="text-red-500 hover:text-red-600">
+                      Product Development
+                    </a>
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Do you feel the HEAT from continuous change in Business Blueprint 
-                    & Reporting? In the current dynamic digital environment, 
-                    where opinions / needs keep changing, are you doing enough 
-                    with right approach, for your Business to take inform decision? 
-                    Are you aware that these days BI approach is 
-                    "AGILE". Walk-in to see how we can help.
+                    Do you feel the HEAT from continuous change in Business Blueprint & Reporting? In the current dynamic digital environment, where opinions / needs keep changing, are you doing enough with right approach, for your Business to take inform decision? Are you aware that these days BI approach is "AGILE". Walk-in to see how we can help.
                   </p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Highlights */}
+              <div className="bg-gray-50 p-6 rounded-lg text-center mb-16">
+                <h3 className="text-2xl mb-4 text-gray-800">Highlights</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Discover our key achievements and offerings that set us apart in the industry.
+                </p>
+              </div>
+
+              {/* 10 Points Divided in Two Halves */}
+              <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
                 <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800">Why Choose GenexCorp?</h3>
+                  <h3 className="text-2xl mb-4 text-gray-800"></h3>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• Complete ETL tool with proprietary database capabilities</li>
-                    <li>• Role-based and AD-based security</li>
-                    <li>• Data compression to save resources</li>
-                    <li>• Complete analysis across systems</li>
-                    <li>• Embedded mapping objects for visualization</li>
+                    <li>• Provides self-service business intelligence for informed, innovative decisions</li>
+                    <li>• Allows user to explore and create new associations in business data</li>
+                    <li>• Combines data from multiple sources into a single, usable, mouldable piece</li>
+                    <li>• Offers complete analysis through ERP, CRM, data warehouses and more</li>
+                    <li>• Promotes collaboration with colleagues for improved decision-making</li>
                   </ul>
                 </div>
                 <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800">Our Achievements</h3>
+                  <h3 className="text-2xl mb-4 text-gray-800"></h3>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• Successfully trained over 500 professionals in BI analytics</li>
-                    <li>• Delivered 100+ IT consulting projects with 95% client satisfaction</li>
-                    <li>• Reduced data processing time by 40% for 20+ enterprises</li>
-                    <li>• Recognized as a top innovator by Tech Insights 2024</li>
+                    <li>• Compresses data to save infrastructure resource</li>
+                    <li>• No use of Data base, it's a complete ETL tool with power of creating central repository in its proprietary database</li>
+                    <li>• Role based security, AD based security enhance the distributed use</li>
+                    <li>• Email Distribution and PDF publishing can be handled by QV Publisher, PDF Distributor and N-Printing solution</li>
+                    <li>• Embedded Map object enhance the capability of viewing</li>
                   </ul>
+                </div>
+              </div>
+
+              {/* Gartner Articles */}
+              <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
+                <div className="bg-white p-6 rounded-lg text-left">
+                  <h3 className="text-2xl mb-4 text-gray-800">Be a pioneer by 2017</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Over the past several years, the BI platform market has grown largely through companies investing in IT-led consolidation projects to standardize IT-centric BI platforms for large-scale systems of record. These have tended to be highly governed and centralized, where IT production reports were pushed out to managers and knowledge workers. Gartner predicts that going forward, companies will shift their future investment away from IT-developed reporting solutions toward business-user-led analysis solutions. IT will focus most of its effort on data modeling and governance. As a result, data discovery will displace IT-authored static reporting as the dominant BI and analytics user interaction paradigm for new implementations by 2015.
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">-Ref Gartner article dated November 16, 2013</p>
+                  <Button
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md"
+                    onClick={() => window.open('https://www.gartner.com/en/newsroom', '_blank')}
+                  >
+                    Read More
+                  </Button>
+                </div>
+                <div className="bg-white p-6 rounded-lg text-left">
+                  <h3 className="text-2xl mb-4 text-gray-800">Data discovery is the new normal, but where do we go from here?</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Smart data discovery has the potential to expand access to sophisticated interactive analysis and insights to business consumers and nontraditional BI users — the approximately 70 percent of users in organizations that currently do not use BI tools or have statistical backgrounds," said Ms. Sallam. "New approaches have the potential to transform how and which users can derive insights from data discovery tools. The potential business benefit will lead to a shift resulting in smart data discovery becoming standard features of most data discovery platforms.
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">-Ref Gartner article dated January 27, 2015</p>
+                  <Button
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md"
+                    onClick={() => window.open('https://www.gartner.com/en/newsroom', '_blank')}
+                  >
+                    Read More
+                  </Button>
                 </div>
               </div>
             </div>
