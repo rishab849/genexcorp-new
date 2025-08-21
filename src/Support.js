@@ -102,12 +102,50 @@ export default function Support() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.designation.trim()) newErrors.designation = "Designation is required";
-    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
-    else if (!/^\d{10}$/.test(formData.mobile.trim())) newErrors.mobile = "Mobile number must be exactly 10 digits";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) newErrors.email = "Invalid email format";
+
+    // Name validation: required, only letters and spaces
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name should contain only letters and spaces";
+    }
+
+    // Designation validation: required, letters, numbers, spaces, - /
+    if (!formData.designation.trim()) {
+      newErrors.designation = "Designation is required";
+    } else if (!/^[a-zA-Z0-9\s\-/]+$/.test(formData.designation.trim())) {
+      newErrors.designation = "Designation can contain letters, numbers, spaces, - and /";
+    }
+
+    // Company validation: optional, but if filled, letters, numbers, spaces, common special chars
+    if (formData.company.trim() && !/^[a-zA-Z0-9\s.,&'-]+$/.test(formData.company.trim())) {
+      newErrors.company = "Company name can contain letters, numbers, spaces, and common punctuation (.,&'-)";
+    }
+
+    // Industry validation: optional, similar to company
+    if (formData.industry.trim() && !/^[a-zA-Z0-9\s.,&'-]+$/.test(formData.industry.trim())) {
+      newErrors.industry = "Industry can contain letters, numbers, spaces, and common punctuation (.,&'-)";
+    }
+
+    // Mobile validation: required, exactly 10 digits, only numbers
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile.trim())) {
+      newErrors.mobile = "Mobile number must be exactly 10 digits with no letters or special characters";
+    }
+
+    // Email validation: required, valid email format
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Invalid email format";
+    }
+
+    // Message validation: optional, but if filled, minimum length
+    if (formData.message.trim() && formData.message.trim().length < 10) {
+      newErrors.message = "Message should be at least 10 characters long if provided";
+    }
+
     return newErrors;
   };
 
@@ -211,20 +249,22 @@ export default function Support() {
                         <input
                           id="company"
                           placeholder="Enter your company name"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className={`w-full px-3 py-2 border ${errors.company ? "border-red-500" : "border-gray-300"} rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                           value={formData.company}
                           onChange={handleChange}
                         />
+                        {errors.company && <p className="text-red-500 text-xs">{errors.company}</p>}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="industry" className="block text-sm font-medium text-gray-700">Industry Vertical</label>
                         <input
                           id="industry"
                           placeholder="e.g., Technology, Healthcare, Finance"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className={`w-full px-3 py-2 border ${errors.industry ? "border-red-500" : "border-gray-300"} rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                           value={formData.industry}
                           onChange={handleChange}
                         />
+                        {errors.industry && <p className="text-red-500 text-xs">{errors.industry}</p>}
                       </div>
                     </div>
 
@@ -264,10 +304,11 @@ export default function Support() {
                         id="message"
                         placeholder="Tell us about your requirements or questions..."
                         rows={5}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
+                        className={`w-full px-3 py-2 border ${errors.message ? "border-red-500" : "border-gray-300"} rounded-md focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none`}
                         value={formData.message}
                         onChange={handleChange}
                       />
+                      {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
                     </div>
 
                     {/* Submit Button */}

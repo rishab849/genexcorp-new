@@ -60,9 +60,15 @@ export default function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 10000); // 10 seconds as per your latest code
+    }, 20000);
     return () => clearInterval(timer);
   }, [slides.length]);
+
+  const handleSlideNavigation = (page) => {
+    console.log('Navigating to:', page); // Debugging
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -87,6 +93,10 @@ export default function App() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    console.log('Current page updated to:', currentPage); // Debugging
+  }, [currentPage]);
 
   const maxScroll = documentHeight - windowHeight;
   const translateY = Math.min(scrollPosition * 0.5, maxScroll);
@@ -140,7 +150,7 @@ export default function App() {
               <div className="flex items-center justify-center space-x-8 mb-16">
                 <Button 
                   className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md"
-                  onClick={() => setCurrentPage('productdevelopment')}
+                  onClick={() => handleSlideNavigation('productdevelopment')}
                 >
                   Get Started
                 </Button>
@@ -152,7 +162,7 @@ export default function App() {
                   {slides.map((slide, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-opacity duration-2000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
+                      className={`absolute inset-0 transition-opacity duration-2000 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}
                     >
                       <ImageWithFallback
                         src={slide.image}
@@ -169,7 +179,6 @@ export default function App() {
                             {slide.title}
                           </h2>
                         </div>
-                        
                         {/* Subtitle and Button in the center-right area */}
                         <div className="w-2/3 flex items-center justify-center space-x-8 pl-8">
                           <div className="flex-1 max-w-md">
@@ -177,17 +186,31 @@ export default function App() {
                               {slide.subtitle}
                             </p>
                           </div>
-                          
                           <div>
-                            <Button
-                              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
-                              onClick={() => {
-                                console.log('Redirecting to:', slide.redirect); // Debug log
-                                setCurrentPage(slide.redirect);
-                              }}
-                            >
-                              Read More
-                            </Button>
+                            {index === 0 && (
+                              <Button
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                onClick={() => handleSlideNavigation('corporatetraining')}
+                              >
+                                Read more
+                              </Button>
+                            )}
+                            {index === 1 && (
+                              <Button
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                onClick={() => handleSlideNavigation('itconsulting')}
+                              >
+                                Read more
+                              </Button>
+                            )}
+                            {index === 2 && (
+                              <Button
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                onClick={() => handleSlideNavigation('training')}
+                              >
+                                Read more
+                              </Button>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -225,7 +248,7 @@ export default function App() {
               <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
                   <h3 className="text-xl mb-4 text-gray-800">
-                    <a href="#" onClick={() => setCurrentPage('itresourcing')} className="text-red-500 hover:text-red-600">
+                    <a href="#" onClick={() => handleSlideNavigation('itresourcing')} className="text-red-500 hover:text-red-600">
                       Services
                     </a>
                   </h3>
@@ -235,7 +258,7 @@ export default function App() {
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
                   <h3 className="text-xl mb-4 text-gray-800">
-                    <a href="#" onClick={() => setCurrentPage('training')} className="text-red-500 hover:text-red-600">
+                    <a href="#" onClick={() => handleSlideNavigation('training')} className="text-red-500 hover:text-red-600">
                       Trainings / Internships
                     </a>
                   </h3>
@@ -245,7 +268,7 @@ export default function App() {
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
                   <h3 className="text-xl mb-4 text-gray-800">
-                    <a href="#" onClick={() => setCurrentPage('itconsulting')} className="text-red-500 hover:text-red-600">
+                    <a href="#" onClick={() => handleSlideNavigation('itconsulting')} className="text-red-500 hover:text-red-600">
                       Consulting
                     </a>
                   </h3>
@@ -255,7 +278,7 @@ export default function App() {
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg text-left">
                   <h3 className="text-xl mb-4 text-gray-800">
-                    <a href="#" onClick={() => setCurrentPage('productdevelopment')} className="text-red-500 hover:text-red-600">
+                    <a href="#" onClick={() => handleSlideNavigation('productdevelopment')} className="text-red-500 hover:text-red-600">
                       Product Development
                     </a>
                   </h3>

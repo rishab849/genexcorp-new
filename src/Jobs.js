@@ -33,6 +33,7 @@ import {
 
 export default function Jobs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -49,6 +50,135 @@ export default function Jobs() {
     }
   });
   const jobOpeningsRef = useRef(null);
+
+  const jobs = [
+    {
+      title: "Full Stack Developer",
+      icon: Code,
+      gradientFrom: "blue-50",
+      gradientTo: "indigo-50",
+      borderColor: "blue-200",
+      iconBg: "blue-500",
+      buttonBg: "blue-500",
+      buttonHover: "blue-600",
+      description: "Looking for a 2-3 year experience Full Stack Developer, experienced with developing Payments, Messaging, Notification and good performance feature apps.",
+      tags: [
+        { text: "Full Stack", bg: "blue-100", textColor: "blue-700" },
+        { text: "Payments", bg: "green-100", textColor: "green-700" },
+        { text: "Messaging", bg: "purple-100", textColor: "purple-700" },
+        { text: "Notifications", bg: "orange-100", textColor: "orange-700" },
+      ],
+      details: {
+        salary: "$80,000 - $120,000 per year",
+        incentives: [
+          "Comprehensive health insurance",
+          "401(k) matching program",
+          "Performance-based bonuses up to 15%",
+          "Flexible remote work options",
+          "Annual professional development stipend of $2,000",
+          "Stock options for eligible employees",
+        ],
+        responsibilities: [
+          "Develop and maintain full-stack web applications using modern technologies",
+          "Implement secure payment processing systems and integrate with gateways",
+          "Build real-time messaging and notification features",
+          "Optimize application performance and ensure scalability",
+          "Collaborate with cross-functional teams to deliver high-quality features",
+        ],
+        requirements: [
+          "2-3 years of experience in full-stack development",
+          "Proficiency in React, Node.js, and related frameworks",
+          "Experience with payment systems (e.g., Stripe, PayPal)",
+          "Strong understanding of database technologies (SQL/NoSQL)",
+          "Excellent problem-solving and communication skills",
+        ],
+      },
+    },
+    {
+      title: "AWS Cloud Engineer",
+      icon: Cloud,
+      gradientFrom: "orange-50",
+      gradientTo: "amber-50",
+      borderColor: "orange-200",
+      iconBg: "orange-500",
+      buttonBg: "orange-500",
+      buttonHover: "orange-600",
+      description: "Looking for a 2-3 year experience Cloud Engineer experienced with AWS Cloud Operations.",
+      tags: [
+        { text: "AWS", bg: "orange-100", textColor: "orange-700" },
+        { text: "Cloud Operations", bg: "blue-100", textColor: "blue-700" },
+        { text: "Infrastructure", bg: "green-100", textColor: "green-700" },
+        { text: "DevOps", bg: "purple-100", textColor: "purple-700" },
+      ],
+      details: {
+        salary: "$90,000 - $130,000 per year",
+        incentives: [
+          "Comprehensive health insurance",
+          "401(k) matching program",
+          "Performance-based bonuses up to 15%",
+          "Flexible remote work options",
+          "Annual professional development stipend of $2,000",
+          "Stock options for eligible employees",
+        ],
+        responsibilities: [
+          "Design, implement, and manage AWS cloud infrastructure",
+          "Optimize cloud operations for cost-efficiency and performance",
+          "Implement security best practices and compliance standards",
+          "Automate deployment and scaling processes",
+          "Monitor and troubleshoot cloud environments",
+        ],
+        requirements: [
+          "2-3 years of experience with AWS cloud services",
+          "AWS certifications (e.g., Solutions Architect, SysOps Administrator) preferred",
+          "Strong knowledge of cloud operations and infrastructure as code",
+          "Proficiency in scripting languages (e.g., Python, Bash)",
+          "Experience with monitoring tools and CI/CD pipelines",
+        ],
+      },
+    },
+    {
+      title: "DevOps Engineer",
+      icon: GitBranch,
+      gradientFrom: "green-50",
+      gradientTo: "emerald-50",
+      borderColor: "green-200",
+      iconBg: "green-500",
+      buttonBg: "green-500",
+      buttonHover: "green-600",
+      description: "Looking for a 2-3 year experience DevOps Engineer.",
+      tags: [
+        { text: "DevOps", bg: "green-100", textColor: "green-700" },
+        { text: "CI/CD", bg: "blue-100", textColor: "blue-700" },
+        { text: "Automation", bg: "purple-100", textColor: "purple-700" },
+        { text: "Monitoring", bg: "gray-100", textColor: "gray-700" },
+      ],
+      details: {
+        salary: "$85,000 - $125,000 per year",
+        incentives: [
+          "Comprehensive health insurance",
+          "401(k) matching program",
+          "Performance-based bonuses up to 15%",
+          "Flexible remote work options",
+          "Annual professional development stipend of $2,000",
+          "Stock options for eligible employees",
+        ],
+        responsibilities: [
+          "Implement and maintain CI/CD pipelines for efficient deployments",
+          "Automate infrastructure provisioning and configuration management",
+          "Monitor system performance and implement scaling solutions",
+          "Collaborate with development teams to improve DevOps practices",
+          "Ensure system reliability and quick incident response",
+        ],
+        requirements: [
+          "2-3 years of experience in DevOps roles",
+          "Proficiency with tools like Jenkins, Docker, Kubernetes",
+          "Strong scripting and automation skills",
+          "Experience with cloud platforms (AWS preferred)",
+          "Knowledge of monitoring and logging tools",
+        ],
+      },
+    },
+  ];
 
   useEffect(() => {
     const fetchMetrics = async () => {
@@ -103,11 +233,6 @@ export default function Jobs() {
     fetchMetrics();
   }, []);
 
-  const handleApplyClick = (jobTitle) => {
-    setSelectedJob(jobTitle);
-    setIsModalOpen(true);
-  };
-
   const handleScrollToJobs = () => {
     jobOpeningsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -124,7 +249,7 @@ export default function Jobs() {
     e.preventDefault();
     // Mock receiver: Log the application data to console
     console.log("Application Submitted:", {
-      jobTitle: selectedJob,
+      jobTitle: selectedJob.title,
       ...formData,
       resume: formData.resume ? formData.resume.name : "No file uploaded",
     });
@@ -139,6 +264,11 @@ export default function Jobs() {
     setIsModalOpen(false);
     setSelectedJob(null);
     setFormData({ name: "", email: "", resume: null, coverLetter: "" });
+  };
+
+  const handleCloseDetails = () => {
+    setIsDetailsOpen(false);
+    setSelectedJob(null);
   };
 
   return (
@@ -162,111 +292,56 @@ export default function Jobs() {
               {/* Current Job Openings */}
               <div className="space-y-6" ref={jobOpeningsRef}>
                 <h3 className="text-2xl text-gray-800 mb-8">Current Job Openings</h3>
-                
-                {/* Job 1: Full Stack Developer */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-blue-500 p-2 rounded-lg">
-                        <Code className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl text-gray-800">1. Full Stack Developer</h4>
-                        <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>Start Date: Immediate</span>
+                {jobs.map((job, index) => (
+                  <div
+                    key={job.title}
+                    className={`bg-gradient-to-br from-${job.gradientFrom} to-${job.gradientTo} p-6 rounded-lg border border-${job.borderColor} hover:shadow-md transition-shadow cursor-pointer`}
+                    onClick={() => {
+                      setSelectedJob(job);
+                      setIsDetailsOpen(true);
+                    }}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className={`bg-${job.iconBg} p-2 rounded-lg`}>
+                          <job.icon className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl text-gray-800">{index + 1}. {job.title}</h4>
+                          <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
+                            <div className="flex items-center space-x-1">
+                              <Calendar className="h-4 w-4" />
+                              <span>Start Date: Immediate</span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <Button
+                        className={`bg-${job.buttonBg} hover:bg-${job.buttonHover} text-white`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedJob(job);
+                          setIsModalOpen(true);
+                        }}
+                      >
+                        Apply Now
+                      </Button>
                     </div>
-                    <Button
-                      className="bg-blue-500 hover:bg-blue-600 text-white"
-                      onClick={() => handleApplyClick("Full Stack Developer")}
-                    >
-                      Apply Now
-                    </Button>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    Looking for a 2-3 year experience Full Stack Developer, experienced with developing Payments, Messaging, Notification and good performance feature apps.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">Full Stack</span>
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">Payments</span>
-                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">Messaging</span>
-                    <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs">Notifications</span>
-                  </div>
-                </div>
-
-                {/* Job 2: AWS Cloud Engineer */}
-                <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-lg border border-orange-200 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-orange-500 p-2 rounded-lg">
-                        <Cloud className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl text-gray-800">2. AWS Cloud Engineer</h4>
-                        <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>Start Date: Immediate</span>
-                          </div>
-                        </div>
-                      </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {job.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {job.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className={`bg-${tag.bg} text-${tag.textColor} px-3 py-1 rounded-full text-xs`}
+                        >
+                          {tag.text}
+                        </span>
+                      ))}
                     </div>
-                    <Button
-                      className="bg-orange-500 hover:bg-orange-600 text-white"
-                      onClick={() => handleApplyClick("AWS Cloud Engineer")}
-                    >
-                      Apply Now
-                    </Button>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    Looking for a 2-3 year experience Cloud Engineer experienced with AWS Cloud Operations.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs">AWS</span>
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">Cloud Operations</span>
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">Infrastructure</span>
-                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">DevOps</span>
-                  </div>
-                </div>
-
-                {/* Job 3: DevOps Engineer */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-green-500 p-2 rounded-lg">
-                        <GitBranch className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl text-gray-800">3. DevOps Engineer</h4>
-                        <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>Start Date: Immediate</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <Button
-                      className="bg-green-500 hover:bg-green-600 text-white"
-                      onClick={() => handleApplyClick("DevOps Engineer")}
-                    >
-                      Apply Now
-                    </Button>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    Looking for a 2-3 year experience DevOps Engineer.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">DevOps</span>
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">CI/CD</span>
-                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">Automation</span>
-                    <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">Monitoring</span>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Technology Consulting Arena */}
@@ -515,12 +590,75 @@ export default function Jobs() {
         </div>
       </div>
 
+      {/* Job Details Modal */}
+      {isDetailsOpen && selectedJob && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
+          <div
+            className={`bg-gradient-to-br from-${selectedJob.gradientFrom} to-${selectedJob.gradientTo} p-8 rounded-lg max-w-lg w-full max-h-[80vh] overflow-y-auto m-4`}
+          >
+            <h3 className="text-2xl text-gray-800 mb-6">{selectedJob.title} - Job Details</h3>
+            <div className="space-y-6 text-gray-700">
+              <div>
+                <strong className="block mb-2">Description:</strong>
+                <p>{selectedJob.description}</p>
+              </div>
+              <div>
+                <strong className="block mb-2">Salary:</strong>
+                <p>{selectedJob.details.salary}</p>
+              </div>
+              <div>
+                <strong className="block mb-2">Incentives:</strong>
+                <ul className="list-disc pl-5 space-y-1">
+                  {selectedJob.details.incentives.map((incentive, i) => (
+                    <li key={i}>{incentive}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong className="block mb-2">Responsibilities:</strong>
+                <ul className="list-disc pl-5 space-y-1">
+                  {selectedJob.details.responsibilities.map((resp, i) => (
+                    <li key={i}>{resp}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <strong className="block mb-2">Requirements:</strong>
+                <ul className="list-disc pl-5 space-y-1">
+                  {selectedJob.details.requirements.map((req, i) => (
+                    <li key={i}>{req}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="flex justify-end space-x-4 mt-6">
+              <Button
+                variant="outline"
+                className="border-gray-500 text-gray-500 hover:bg-gray-50"
+                onClick={handleCloseDetails}
+              >
+                Close
+              </Button>
+              <Button
+                className={`bg-${selectedJob.buttonBg} hover:bg-${selectedJob.buttonHover} text-white`}
+                onClick={() => {
+                  setIsDetailsOpen(false);
+                  setIsModalOpen(true);
+                }}
+              >
+                Apply Now
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Application Modal */}
-      {isModalOpen && (
+      {isModalOpen && selectedJob && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+          <div className={`bg-gradient-to-br from-${selectedJob.gradientFrom} to-${selectedJob.gradientTo} p-8 rounded-lg max-w-lg w-full`}>
             <h3 className="text-2xl text-gray-800 mb-6">
-              Apply for {selectedJob}
+              Apply for {selectedJob.title}
             </h3>
             <div className="space-y-4">
               <div>
@@ -577,7 +715,7 @@ export default function Jobs() {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  className={`bg-${selectedJob.buttonBg} hover:bg-${selectedJob.buttonHover} text-white`}
                   onClick={handleSubmit}
                 >
                   Submit Application
