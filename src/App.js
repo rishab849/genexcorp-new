@@ -29,6 +29,7 @@ export default function App() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
   const [documentHeight, setDocumentHeight] = useState(0);
+  const [isSocialSidebarOpen, setIsSocialSidebarOpen] = useState(false); // For mobile sidebar toggle
 
   const slides = [
     {
@@ -65,7 +66,7 @@ export default function App() {
   }, [slides.length]);
 
   const handleSlideNavigation = (page) => {
-    console.log('Navigating to:', page); // Debugging
+    console.log('Navigating to:', page);
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -95,7 +96,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log('Current page updated to:', currentPage); // Debugging
+    console.log('Current page updated to:', currentPage);
   }, [currentPage]);
 
   const maxScroll = documentHeight - windowHeight;
@@ -136,20 +137,20 @@ export default function App() {
     default:
       content = (
         <main className="flex flex-1 relative">
-          <div className="flex-1 flex flex-col items-center px-8 py-16">
+          <div className="flex-1 flex flex-col items-center px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
             <div className="max-w-7xl w-full text-center">
-              <h1 className="text-6xl leading-tight text-gray-800 mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl leading-tight text-gray-800 mb-4 sm:mb-6">
                 Innovative <span className="text-red-500">Corporate Solutions</span>
                 <br />
                 & <span className="text-red-500">Strategic Growth</span>
               </h1>
-              <p className="text-xl text-gray-500 mb-8 max-w-4xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-6 sm:mb-8 max-w-4xl mx-auto">
                 Everyone that is part of Genexcorp is passionate about how IT can
                 help transform your business...
               </p>
-              <div className="flex items-center justify-center space-x-8 mb-16">
+              <div className="flex items-center justify-center space-x-4 sm:space-x-8 mb-8 sm:mb-12 md:mb-16">
                 <Button 
-                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-md"
+                  className="bg-red-500 hover:bg-red-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-md text-sm sm:text-base"
                   onClick={() => handleSlideNavigation('productdevelopment')}
                 >
                   Get Started
@@ -157,8 +158,8 @@ export default function App() {
               </div>
 
               {/* Updated Slider */}
-              <div className="relative w-full max-w-full mx-auto mb-16">
-                <div className="relative h-96 rounded-2xl overflow-hidden">
+              <div className="relative w-full max-w-full mx-auto mb-8 sm:mb-12 md:mb-16">
+                <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden">
                   {slides.map((slide, index) => (
                     <div
                       key={index}
@@ -172,24 +173,24 @@ export default function App() {
                       <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
                       
                       {/* Content Container */}
-                      <div className="absolute inset-0 flex items-center px-16">
-                        {/* Title on the left */}
-                        <div className="w-1/3">
-                          <h2 className="text-4xl font-bold text-white text-left leading-tight">
+                      <div className="absolute inset-0 flex flex-col sm:flex-row items-center px-4 sm:px-8 md:px-16 py-4 sm:py-6">
+                        {/* Title */}
+                        <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
+                          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-left leading-tight">
                             {slide.title}
                           </h2>
                         </div>
-                        {/* Subtitle and Button in the center-right area */}
-                        <div className="w-2/3 flex items-center justify-center space-x-8 pl-8">
+                        {/* Subtitle and Button */}
+                        <div className="w-full sm:w-2/3 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 sm:pl-8">
                           <div className="flex-1 max-w-md">
-                            <p className="text-xl text-gray-300 text-center leading-relaxed">
+                            <p className="text-sm sm:text-base md:text-xl text-gray-300 text-center sm:text-left leading-relaxed">
                               {slide.subtitle}
                             </p>
                           </div>
                           <div>
                             {index === 0 && (
                               <Button
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base"
                                 onClick={() => handleSlideNavigation('corporatetraining')}
                               >
                                 Read more
@@ -197,7 +198,7 @@ export default function App() {
                             )}
                             {index === 1 && (
                               <Button
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base"
                                 onClick={() => handleSlideNavigation('itconsulting')}
                               >
                                 Read more
@@ -205,7 +206,7 @@ export default function App() {
                             )}
                             {index === 2 && (
                               <Button
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md"
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base"
                                 onClick={() => handleSlideNavigation('training')}
                               >
                                 Read more
@@ -220,24 +221,24 @@ export default function App() {
                   {/* Navigation buttons */}
                   <button
                     onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-2 sm:p-3 rounded-full"
                   >
-                    <ChevronLeft className="h-6 w-6 text-white" />
+                    <ChevronLeft className="h-5 sm:h-6 w-5 sm:w-6 text-white" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 p-2 sm:p-3 rounded-full"
                   >
-                    <ChevronRight className="h-6 w-6 text-white" />
+                    <ChevronRight className="h-5 sm:h-6 w-5 sm:w-6 text-white" />
                   </button>
                   
                   {/* Dots indicator */}
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+                  <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
                     {slides.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`w-3 h-3 rounded-full ${index === currentSlide ? "bg-red-500" : "bg-white/50"}`}
+                        className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full ${index === currentSlide ? "bg-red-500" : "bg-white/50"}`}
                       ></button>
                     ))}
                   </div>
@@ -245,62 +246,62 @@ export default function App() {
               </div>
 
               {/* Four Points with Hyperlinks */}
-              <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-                <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16 max-w-6xl mx-auto">
+                <div className="bg-gray-50 p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 text-gray-800">
                     <a href="#" onClick={() => handleSlideNavigation('itresourcing')} className="text-red-500 hover:text-red-600">
                       Services
                     </a>
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Since we understand your delivery, your participants will be ready to take any challenge in Analytics within few days after training, with the curriculum we created, for experienced BI guys and relatively new one to understand.
                   </p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">
+                <div className="bg-gray-50 p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 text-gray-800">
                     <a href="#" onClick={() => handleSlideNavigation('training')} className="text-red-500 hover:text-red-600">
                       Trainings / Internships
                     </a>
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Nobody would believe what is called need based training approach unless experienced. If you are really looking to take your career into BI and Analytics, this is the right place for you to get adopted with the foundational understanding.
                   </p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">
+                <div className="bg-gray-50 p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 text-gray-800">
                     <a href="#" onClick={() => handleSlideNavigation('itconsulting')} className="text-red-500 hover:text-red-600">
                       Consulting
                     </a>
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Leadership with Passion for Analytics –We change the way Organizations looks at their Business. With the ever growing need of Comprehensive Business Intelligence, organizations need to have talent which is cost effective. We are the one of those rare, who can solve analytic issues.
                   </p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg text-left">
-                  <h3 className="text-xl mb-4 text-gray-800">
+                <div className="bg-gray-50 p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 text-gray-800">
                     <a href="#" onClick={() => handleSlideNavigation('productdevelopment')} className="text-red-500 hover:text-red-600">
                       Product Development
                     </a>
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Do you feel the HEAT from continuous change in Business Blueprint & Reporting? In the current dynamic digital environment, where opinions / needs keep changing, are you doing enough with right approach, for your Business to take inform decision? Are you aware that these days BI approach is "AGILE". Walk-in to see how we can help.
                   </p>
                 </div>
               </div>
 
               {/* Highlights */}
-              <div className="bg-gray-50 p-6 rounded-lg text-center mb-16">
-                <h3 className="text-2xl mb-4 text-gray-800">Highlights</h3>
-                <p className="text-gray-600 leading-relaxed">
+              <div className="bg-gray-50 p-4 sm:p-6 rounded-lg text-center mb-8 sm:mb-12 md:mb-16">
+                <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4 text-gray-800">Highlights</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                   Discover our key achievements and offerings that set us apart in the industry.
                 </p>
               </div>
 
               {/* 10 Points Divided in Two Halves */}
-              <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-                <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800"></h3>
-                  <ul className="space-y-2 text-gray-600">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16 max-w-6xl mx-auto">
+                <div className="bg-white border-l-4 border-red-500 pl-4 sm:pl-6 text-left">
+                  <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4 text-gray-800"></h3>
+                  <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
                     <li>• Provides self-service business intelligence for informed, innovative decisions</li>
                     <li>• Allows user to explore and create new associations in business data</li>
                     <li>• Combines data from multiple sources into a single, usable, mouldable piece</li>
@@ -308,9 +309,9 @@ export default function App() {
                     <li>• Promotes collaboration with colleagues for improved decision-making</li>
                   </ul>
                 </div>
-                <div className="bg-white border-l-4 border-red-500 pl-6 text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800"></h3>
-                  <ul className="space-y-2 text-gray-600">
+                <div className="bg-white border-l-4 border-red-500 pl-4 sm:pl-6 text-left">
+                  <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4 text-gray-800"></h3>
+                  <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
                     <li>• Compresses data to save infrastructure resource</li>
                     <li>• No use of Data base, it's a complete ETL tool with power of creating central repository in its proprietary database</li>
                     <li>• Role based security, AD based security enhance the distributed use</li>
@@ -321,28 +322,28 @@ export default function App() {
               </div>
 
               {/* Gartner Articles */}
-              <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-                <div className="bg-white p-6 rounded-lg text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800">Be a pioneer by 2017</h3>
-                  <p className="text-gray-600 leading-relaxed">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16 max-w-6xl mx-auto">
+                <div className="bg-white p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4 text-gray-800">Be a pioneer by 2017</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Over the past several years, the BI platform market has grown largely through companies investing in IT-led consolidation projects to standardize IT-centric BI platforms for large-scale systems of record. These have tended to be highly governed and centralized, where IT production reports were pushed out to managers and knowledge workers. Gartner predicts that going forward, companies will shift their future investment away from IT-developed reporting solutions toward business-user-led analysis solutions. IT will focus most of its effort on data modeling and governance. As a result, data discovery will displace IT-authored static reporting as the dominant BI and analytics user interaction paradigm for new implementations by 2015.
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">-Ref Gartner article dated November 16, 2013</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-2">-Ref Gartner article dated November 16, 2013</p>
                   <Button
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md text-sm sm:text-base"
                     onClick={() => window.open('https://www.gartner.com/en/newsroom', '_blank')}
                   >
                     Read More
                   </Button>
                 </div>
-                <div className="bg-white p-6 rounded-lg text-left">
-                  <h3 className="text-2xl mb-4 text-gray-800">Data discovery is the new normal, but where do we go from here?</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                <div className="bg-white p-4 sm:p-6 rounded-lg text-left">
+                  <h3 className="text-xl sm:text-2xl mb-3 sm:mb-4 text-gray-800">Data discovery is the new normal, but where do we go from here?</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     Smart data discovery has the potential to expand access to sophisticated interactive analysis and insights to business consumers and nontraditional BI users — the approximately 70 percent of users in organizations that currently do not use BI tools or have statistical backgrounds," said Ms. Sallam. "New approaches have the potential to transform how and which users can derive insights from data discovery tools. The potential business benefit will lead to a shift resulting in smart data discovery becoming standard features of most data discovery platforms.
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">-Ref Gartner article dated January 27, 2015</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-2">-Ref Gartner article dated January 27, 2015</p>
                   <Button
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 mt-4 rounded-md text-sm sm:text-base"
                     onClick={() => window.open('https://www.gartner.com/en/newsroom', '_blank')}
                   >
                     Read More
@@ -363,22 +364,45 @@ export default function App() {
         {content}
       </div>
       
-      {/* Social Sidebar - Now appears on all pages */}
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 hidden lg:block z-50">
-        <div className="flex flex-col items-center space-y-6 bg-red-500 p-6 rounded-lg shadow-lg">
+      {/* Social Sidebar - Toggleable on mobile */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
+        <div className="lg:flex flex-col items-center space-y-6 bg-red-500 p-4 sm:p-6 rounded-lg shadow-lg hidden lg:block">
           <a href="#" className="text-white hover:text-gray-200">
-            <Facebook className="h-6 w-6" />
+            <Facebook className="h-5 sm:h-6 w-5 sm:w-6" />
           </a>
           <a href="#" className="text-white hover:text-gray-200">
-            <Twitter className="h-6 w-6" />
+            <Twitter className="h-5 sm:h-6 w-5 sm:w-6" />
           </a>
           <a href="#" className="text-white hover:text-gray-200">
-            <Mail className="h-6 w-6" />
+            <Mail className="h-5 sm:h-6 w-5 sm:w-6" />
           </a>
           <a href="#" className="text-white hover:text-gray-200">
-            <Linkedin className="h-6 w-6" />
+            <Linkedin className="h-5 sm:h-6 w-5 sm:w-6" />
           </a>
         </div>
+        {/* Mobile toggle button */}
+        <button
+          className="lg:hidden fixed right-4 top-4 bg-red-500 text-white p-2 rounded-full z-50"
+          onClick={() => setIsSocialSidebarOpen(!isSocialSidebarOpen)}
+        >
+          {isSocialSidebarOpen ? 'Close' : 'Social'}
+        </button>
+        {isSocialSidebarOpen && (
+          <div className="lg:hidden fixed right-4 top-16 bg-red-500 p-4 rounded-lg shadow-lg flex flex-col space-y-4">
+            <a href="#" className="text-white hover:text-gray-200">
+              <Facebook className="h-5 w-5" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-200">
+              <Twitter className="h-5 w-5" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-200">
+              <Mail className="h-5 w-5" />
+            </a>
+            <a href="#" className="text-white hover:text-gray-200">
+              <Linkedin className="h-5 w-5" />
+            </a>
+          </div>
+        )}
       </div>
       
       <Footer onNavigate={setCurrentPage} />

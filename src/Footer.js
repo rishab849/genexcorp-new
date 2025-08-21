@@ -6,12 +6,12 @@ import {
 
 export default function Footer({ onNavigate }) {
   return (
-    <footer className="bg-slate-50 text-gray-800 mt-8 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-8 py-8 grid md:grid-cols-3 gap-8 items-start">
+    <footer className="bg-slate-50 text-gray-800 mt-4 sm:mt-6 md:mt-8 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-start">
         {/* About GenexCorp */}
         <div>
-          <h2 className="text-lg text-gray-900 mb-3">About GenexCorp</h2>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <h2 className="text-base sm:text-lg text-gray-900 mb-2 sm:mb-3">About GenexCorp</h2>
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
             Some believe in the power of numbers. Some believe in the power of technology. We believe 
             in the power of people, power of human touch which brings best out of the best and the impact 
             people can have on technology.
@@ -20,8 +20,8 @@ export default function Footer({ onNavigate }) {
 
         {/* GenexCorp Quick Links */}
         <div className="text-center">
-          <h3 className="text-gray-900 mb-4">GenexCorp Quick Links</h3>
-          <ul className="space-y-3 text-sm">
+          <h3 className="text-base sm:text-lg text-gray-900 mb-3 sm:mb-4">GenexCorp Quick Links</h3>
+          <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
             <li>
               <button 
                 onClick={() => onNavigate('home')} 
@@ -83,8 +83,8 @@ export default function Footer({ onNavigate }) {
 
         {/* Contact Information */}
         <div>
-          <h3 className="text-gray-900 mb-4">Contact Information</h3>
-          <div className="space-y-2 text-sm text-gray-600 mb-4">
+          <h3 className="text-base sm:text-lg text-gray-900 mb-3 sm:mb-4">Contact Information</h3>
+          <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
             <p className="hover:text-red-500 transition-colors cursor-pointer">
               📍 VT Plaza, 4th Floor, KPHB Colony,<br />
               Kukatpally, Road # 1, Hyderabad - 500085,<br />
@@ -101,29 +101,29 @@ export default function Footer({ onNavigate }) {
             </a>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="flex space-x-3 sm:space-x-4">
             <a 
               href="#" 
-              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-2 hover:bg-red-50 rounded-full"
+              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-1 sm:p-2 hover:bg-red-50 rounded-full"
             >
-              <Facebook className="h-5 w-5" />
+              <Facebook className="h-4 sm:h-5 w-4 sm:w-5" />
             </a>
             <a 
               href="#" 
-              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-2 hover:bg-red-50 rounded-full"
+              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-1 sm:p-2 hover:bg-red-50 rounded-full"
             >
-              <Twitter className="h-5 w-5" />
+              <Twitter className="h-4 sm:h-5 w-4 sm:w-5" />
             </a>
             <a 
               href="#" 
-              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-2 hover:bg-red-50 rounded-full"
+              className="text-gray-600 hover:text-red-500 hover:scale-110 transform transition-all duration-200 p-1 sm:p-2 hover:bg-red-50 rounded-full"
             >
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-4 sm:h-5 w-4 sm:w-5" />
             </a>
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 text-center py-4 text-xs text-gray-500 border-t border-gray-200">
+      <div className="bg-gray-100 text-center py-3 sm:py-4 text-xs sm:text-sm text-gray-500 border-t border-gray-200">
         © Genexcorp.com, {new Date().getFullYear()}. All rights reserved
       </div>
     </footer>
