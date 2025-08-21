@@ -54,7 +54,6 @@ export default function OurObjective() {
         });
       } catch (error) {
         console.error('Error fetching metrics:', error);
-        // Set fallback random values if API fails
         setMetrics({
           projectsDelivered: Math.floor(Math.random() * 500) + 500,
           clientSatisfaction: Math.floor(Math.random() * 10) + 90 + '%',
@@ -68,35 +67,33 @@ export default function OurObjective() {
 
   return (
     <main className="flex flex-1">
-      {/* Content Area */}
-      <div className="flex-1 px-8 py-16">
+      <div className="flex-1 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
-          {/* Page Title */}
-          <div className="mb-16">
-            <h1 className="text-5xl text-gray-800 mb-6">Our <span className="text-red-500">Objective</span></h1>
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl text-gray-800 mb-4 sm:mb-6">
+              Our <span className="text-red-500">Objective</span>
+            </h1>
           </div>
 
-          {/* Blue Quote Section */}
-          <div className="border-l-4 border-blue-500 pl-8 mb-12">
-            <h2 className="text-3xl text-blue-600 mb-4">
+          <div className="border-l-4 border-blue-500 pl-4 sm:pl-6 md:pl-8 mb-6 sm:mb-8 md:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-600 mb-3 sm:mb-4">
               At GenexCorp, "Transforming challenges into opportunities" is more than our mission—it's the foundation of every client partnership we build
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Left Content */}
-            <div className="lg:col-span-2 space-y-6 text-gray-700 leading-relaxed">
-              <p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 lg:gap-12">
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6 text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base">
                 While others focus on the power of <strong>DATA</strong> and the capabilities of <strong>TECHNOLOGY</strong>, 
                 we center our approach on something more fundamental.
               </p>
               
-              <p>
+              <p className="text-sm sm:text-base">
                 We believe in the power of <strong>PEOPLE</strong>—the transformative impact of human insight, creativity, 
                 and expertise that turns raw technology into meaningful business solutions.
               </p>
 
-              <p>
+              <p className="text-sm sm:text-base">
                 Our foundation is built on the conviction that diverse perspectives and human-centered innovation create 
                 exceptional technology organizations. We prioritize <strong>PEOPLE FIRST</strong>, driving our vision to develop 
                 technology experts who excel not just in what they deliver, but in their shared passion for organizational success. 
@@ -106,7 +103,7 @@ export default function OurObjective() {
                 and optimize processes while delivering measurable ROI and competitive differentiation.
               </p>
 
-              <p>
+              <p className="text-sm sm:text-base">
                 Our commitment centers on collaborative partnerships, working closely with you to develop the advanced analytics 
                 and intelligent systems your business deserves. Our consultants immerse themselves in understanding your unique 
                 challenges, analyze your market dynamics, and craft strategies that drive sustainable success. Our unified approach 
@@ -114,118 +111,108 @@ export default function OurObjective() {
                 and solutions bring to your business operations and growth.
               </p>
 
-              <p>
+              <p className="text-sm sm:text-base">
                 Our experienced consultants have a proven track record in the technology sector, accelerating growth for 
                 multinational corporations, solving complex business challenges, and delivering innovative solutions that 
                 provide significant competitive advantages. Our team's specialized expertise spans multiple cutting-edge domains:
               </p>
 
-              {/* Core Specialization Areas */}
-              <div className="mt-8">
-                <h4 className="text-xl text-gray-800 mb-4">Core Specialization Areas</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <ShoppingCart className="h-8 w-8 text-orange-500 mb-3 group-hover:text-red-500 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">E-commerce Solutions</h5>
-                    <p className="text-sm text-gray-600">Complete digital commerce platforms and optimization for seamless online experiences.</p>
+              <div className="mt-6 sm:mt-8 md:mt-12">
+                <h4 className="text-xl sm:text-2xl text-gray-800 mb-4 sm:mb-6">Core Specialization Areas</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <ShoppingCart className="h-6 sm:h-8 w-6 sm:w-8 text-orange-500 mb-2 sm:mb-3 group-hover:text-red-500 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">E-commerce Solutions</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Complete digital commerce platforms and optimization for seamless online experiences.</p>
                   </div>
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <Smartphone className="h-8 w-8 text-blue-500 mb-3 group-hover:text-red-500 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">Mobile & Smart Technology</h5>
-                    <p className="text-sm text-gray-600">Next-generation mobile applications and IoT solutions for connected businesses.</p>
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <Smartphone className="h-6 sm:h-8 w-6 sm:w-8 text-blue-500 mb-2 sm:mb-3 group-hover:text-red-500 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Mobile & Smart Technology</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Next-generation mobile applications and IoT solutions for connected businesses.</p>
                   </div>
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <Cloud className="h-8 w-8 text-green-500 mb-3 group-hover:text-red-500 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">Enterprise Cloud Infrastructure</h5>
-                    <p className="text-sm text-gray-600">Scalable cloud architecture and migration services for robust operations.</p>
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <Cloud className="h-6 sm:h-8 w-6 sm:w-8 text-green-500 mb-2 sm:mb-3 group-hover:text-red-500 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Enterprise Cloud Infrastructure</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Scalable cloud architecture and migration services for robust operations.</p>
                   </div>
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <Database className="h-8 w-8 text-purple-500 mb-3 group-hover:text-red-500 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">Business Intelligence & Analytics</h5>
-                    <p className="text-sm text-gray-600">Data-driven insights and predictive modeling for strategic decision-making.</p>
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <Database className="h-6 sm:h-8 w-6 sm:w-8 text-purple-500 mb-2 sm:mb-3 group-hover:text-red-500 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Business Intelligence & Analytics</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Data-driven insights and predictive modeling for strategic decision-making.</p>
                   </div>
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <Cog className="h-8 w-8 text-red-500 mb-3 group-hover:text-red-600 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">Enterprise Integration (EAI/ERP)</h5>
-                    <p className="text-sm text-gray-600">Seamless system integration and process automation for efficiency.</p>
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <Cog className="h-6 sm:h-8 w-6 sm:w-8 text-red-500 mb-2 sm:mb-3 group-hover:text-red-600 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Enterprise Integration (EAI/ERP)</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Seamless system integration and process automation for efficiency.</p>
                   </div>
-                  <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
-                    <Zap className="h-8 w-8 text-yellow-500 mb-3 group-hover:text-red-500 transition-colors" />
-                    <h5 className="text-lg font-semibold text-gray-800 mb-2">Digital Transformation</h5>
-                    <p className="text-sm text-gray-600">Embracing digital innovation to drive business growth and agility.</p>
+                  <div className="group bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md hover:border-red-500 border border-gray-200 transition-all duration-200">
+                    <Zap className="h-6 sm:h-8 w-6 sm:w-8 text-yellow-500 mb-2 sm:mb-3 group-hover:text-red-500 transition-colors" />
+                    <h5 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">Digital Transformation</h5>
+                    <p className="text-xs sm:text-sm text-gray-600">Embracing digital innovation to drive business growth and agility.</p>
                   </div>
                 </div>
               </div>
 
-              {/* Our Promise */}
-              <div className="mt-8 bg-gradient-to-r from-red-50 to-blue-50 p-6 rounded-lg text-center">
-                <ShieldCheck className="h-10 w-10 text-blue-500 mx-auto mb-3" />
-                <h4 className="text-xl text-blue-800 mb-3">Our Promise</h4>
-                <p className="text-blue-700">
+              <div className="mt-6 sm:mt-8 md:mt-12 bg-gradient-to-r from-red-50 to-blue-50 p-4 sm:p-6 md:p-8 rounded-lg text-center">
+                <ShieldCheck className="h-8 sm:h-10 w-8 sm:w-10 text-blue-500 mx-auto mb-2 sm:mb-3" />
+                <h4 className="text-base sm:text-lg md:text-xl text-blue-800 mb-2 sm:mb-3">Our Promise</h4>
+                <p className="text-xs sm:text-sm text-blue-700">
                   We don't just deliver technology solutions—we forge lasting partnerships that evolve with your business. 
                   Every project is an opportunity to demonstrate how strategic technology implementation can transform your 
                   operations, enhance your market position, and drive sustainable growth.
                 </p>
-                
               </div>
             </div>
 
-            {/* Right Side - Service Showcase */}
             <div className="lg:col-span-1">
-              <div className="sticky top-8">
-                {/* Technology Expertise */}
-                <div className="bg-white border border-gray-200 p-6 rounded-xl mb-6">
-                  <h4 className="text-lg text-gray-800 mb-4">Technology Expertise</h4>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs">React</span>
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">Node.js</span>
-                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">AWS</span>
-                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">Python</span>
-                    <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs">MongoDB</span>
-                    <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs">Docker</span>
+              <div className="sticky top-4 sm:top-8">
+                <div className="bg-white border border-gray-200 p-4 sm:p-6 rounded-xl mb-4 sm:mb-6">
+                  <h4 className="text-base sm:text-lg text-gray-800 mb-3 sm:mb-4">Technology Expertise</h4>
+                  <div className="flex flex-wrap gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <span className="bg-red-100 text-red-700 px-2 sm:px-3 py-1 rounded-full text-xs">React</span>
+                    <span className="bg-blue-100 text-blue-700 px-2 sm:px-3 py-1 rounded-full text-xs">Node.js</span>
+                    <span className="bg-green-100 text-green-700 px-2 sm:px-3 py-1 rounded-full text-xs">AWS</span>
+                    <span className="bg-purple-100 text-purple-700 px-2 sm:px-3 py-1 rounded-full text-xs">Python</span>
+                    <span className="bg-orange-100 text-orange-700 px-2 sm:px-3 py-1 rounded-full text-xs">MongoDB</span>
+                    <span className="bg-indigo-100 text-indigo-700 px-2 sm:px-3 py-1 rounded-full text-xs">Docker</span>
                   </div>
                   <div className="flex items-center justify-center text-center">
-                    <Code className="h-12 w-12 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* Stats Cards */}
-                <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-red-200 transition-colors">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-2xl text-red-500 mb-1">{metrics.projectsDelivered}</div>
-                        <div className="text-sm text-gray-600">Projects Delivered</div>
-                      </div>
-                      <CheckCircle className="h-8 w-8 text-red-500" />
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-blue-200 transition-colors">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-2xl text-blue-500 mb-1">{metrics.clientSatisfaction}</div>
-                        <div className="text-sm text-gray-600">Client Satisfaction</div>
-                      </div>
-                      <Star className="h-8 w-8 text-blue-500" />
-                    </div>
-                  </div>
-                  <div className="bg-white p-4 rounded-lg shadow-sm border hover:border-green-200 transition-colors">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-2xl text-green-500 mb-1">{metrics.yearsExperience}</div>
-                        <div className="text-sm text-gray-600">Years Experience</div>
-                      </div>
-                      <Zap className="h-8 w-8 text-green-500" />
-                    </div>
+                    <Code className="h-10 sm:h-12 w-10 sm:w-12 text-gray-400" />
                   </div>
                 </div>
 
-                
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="bg-white p-4 sm:p-5 rounded-lg shadow-sm border hover:border-red-200 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-lg sm:text-xl md:text-2xl text-red-500 mb-1">{metrics.projectsDelivered}</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Projects Delivered</div>
+                      </div>
+                      <CheckCircle className="h-6 sm:h-8 w-6 sm:w-8 text-red-500" />
+                    </div>
+                  </div>
+                  <div className="bg-white p-4 sm:p-5 rounded-lg shadow-sm border hover:border-blue-200 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-lg sm:text-xl md:text-2xl text-blue-500 mb-1">{metrics.clientSatisfaction}</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Client Satisfaction</div>
+                      </div>
+                      <Star className="h-6 sm:h-8 w-6 sm:w-8 text-blue-500" />
+                    </div>
+                  </div>
+                  <div className="bg-white p-4 sm:p-5 rounded-lg shadow-sm border hover:border-green-200 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-lg sm:text-xl md:text-2xl text-green-500 mb-1">{metrics.yearsExperience}</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Years Experience</div>
+                      </div>
+                      <Zap className="h-6 sm:h-8 w-6 sm:w-8 text-green-500" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          
         </div>
       </div>
     </main>
