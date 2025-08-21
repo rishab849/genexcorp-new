@@ -41,6 +41,8 @@ export default function Jobs() {
     resume: null,
     coverLetter: "",
   });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
   const [metrics, setMetrics] = useState({
     jobs: {
       totalPositions: '...',
@@ -195,13 +197,13 @@ export default function Jobs() {
               console.log('Total Positions data:', data);
               return data[0].random;
             }),
-          fetch('https://csrng.net/csrng/csrng.php?min=1&max=1')
+          fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
             .then(res => res.json())
             .then(data => data[0].random),
           fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
             .then(res => res.json())
             .then(data => data[0].random),
-          fetch('https://csrng.net/csrng/csrng.php?min=2&max=2')
+          fetch('https://csrng.net/csrng/csrng.php?min=2&max=3')
             .then(res => res.json())
             .then(data => data[0].random + ' Years'),
         ]);
@@ -221,10 +223,10 @@ export default function Jobs() {
         // Set fallback random values if API fails
         setMetrics({
           jobs: {
-            totalPositions: Math.floor(Math.random() * 0) + 3,
-            developmentRoles: Math.floor(Math.random() * 0) + 1,
-            cloudDevOpsRoles: Math.floor(Math.random() * 0) + 2,
-            experienceLevel: Math.floor(Math.random() * 0) + '1 - 02' + ' Years',
+            totalPositions: Math.floor(Math.random() * 8) + 3,
+            developmentRoles: Math.floor(Math.random() * 4) + 1,
+            cloudDevOpsRoles: Math.floor(Math.random() * 4) + 1,
+            experienceLevel: Math.floor(Math.random() * 2) + 2 + ' Years',
           }
         });
       }
@@ -232,6 +234,43 @@ export default function Jobs() {
 
     fetchMetrics();
   }, []);
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Name validation: required, only letters and spaces
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name should contain only letters and spaces";
+    }
+
+    // Email validation: required, valid email format
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Invalid email format";
+    }
+
+    // Resume validation: required, only .pdf, .doc, .docx, max size 5MB
+    if (!formData.resume) {
+      newErrors.resume = "Resume is required";
+    } else {
+      const validExtensions = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!validExtensions.includes(formData.resume.type)) {
+        newErrors.resume = "Resume must be a PDF or Word document (.pdf, .doc, .docx)";
+      } else if (formData.resume.size > 5 * 1024 * 1024) {
+        newErrors.resume = "Resume file size must not exceed 5MB";
+      }
+    }
+
+    // Cover Letter validation: optional, minimum length if provided
+    if (formData.coverLetter.trim() && formData.coverLetter.trim().length < 50) {
+      newErrors.coverLetter = "Cover letter should be at least 50 characters long if provided";
+    }
+
+    return newErrors;
+  };
 
   const handleScrollToJobs = () => {
     jobOpeningsRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -243,27 +282,41 @@ export default function Jobs() {
       ...prev,
       [name]: files ? files[0] : value,
     }));
+    // Clear error for the field being edited
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+    setSuccessMessage("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock receiver: Log the application data to console
-    console.log("Application Submitted:", {
-      jobTitle: selectedJob.title,
-      ...formData,
-      resume: formData.resume ? formData.resume.name : "No file uploaded",
-    });
-    // Reset form and close modal
-    setFormData({ name: "", email: "", resume: null, coverLetter: "" });
-    setIsModalOpen(false);
-    setSelectedJob(null);
-    alert("Application submitted successfully! (Check console for details)");
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setSuccessMessage("");
+    } else {
+      // Mock receiver: Log the application data to console
+      console.log("Application Submitted:", {
+        jobTitle: selectedJob.title,
+        ...formData,
+        resume: formData.resume ? formData.resume.name : "No file uploaded",
+      });
+      setSuccessMessage("Application submitted successfully!");
+      // Reset form and close modal
+      setFormData({ name: "", email: "", resume: null, coverLetter: "" });
+      setErrors({});
+      setIsModalOpen(false);
+      setSelectedJob(null);
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedJob(null);
     setFormData({ name: "", email: "", resume: null, coverLetter: "" });
+    setErrors({});
+    setSuccessMessage("");
   };
 
   const handleCloseDetails = () => {
@@ -660,51 +713,62 @@ export default function Jobs() {
             <h3 className="text-2xl text-gray-800 mb-6">
               Apply for {selectedJob.title}
             </h3>
+            {successMessage && (
+              <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-md flex items-center">
+                <CheckCircle className="h-5 w-5 mr-2" />
+                {successMessage}
+              </div>
+            )}
             <div className="space-y-4">
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Full Name</label>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-600">Full Name *</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className={`w-full p-2 border ${errors.name ? "border-red-500" : "border-gray-300"} rounded-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                   placeholder="Enter your full name"
                   required
                 />
+                {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
               </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Email</label>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-600">Email *</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className={`w-full p-2 border ${errors.email ? "border-red-500" : "border-gray-300"} rounded-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500`}
                   placeholder="Enter your email"
                   required
                 />
+                {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
               </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Resume</label>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-600">Resume *</label>
                 <input
                   type="file"
                   name="resume"
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className={`w-full p-2 border ${errors.resume ? "border-red-500" : "border-gray-300"} rounded-lg`}
                   accept=".pdf,.doc,.docx"
+                  required
                 />
+                {errors.resume && <p className="text-red-500 text-xs">{errors.resume}</p>}
               </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1">Cover Letter</label>
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-600">Cover Letter</label>
                 <textarea
                   name="coverLetter"
                   value={formData.coverLetter}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className={`w-full p-2 border ${errors.coverLetter ? "border-red-500" : "border-gray-300"} rounded-lg focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none`}
                   placeholder="Enter your cover letter"
                   rows="4"
                 />
+                {errors.coverLetter && <p className="text-red-500 text-xs">{errors.coverLetter}</p>}
               </div>
               <div className="flex justify-end space-x-4">
                 <Button
