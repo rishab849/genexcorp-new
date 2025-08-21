@@ -195,13 +195,13 @@ export default function Jobs() {
               console.log('Total Positions data:', data);
               return data[0].random;
             }),
-          fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
+          fetch('https://csrng.net/csrng/csrng.php?min=1&max=1')
             .then(res => res.json())
             .then(data => data[0].random),
           fetch('https://csrng.net/csrng/csrng.php?min=1&max=5')
             .then(res => res.json())
             .then(data => data[0].random),
-          fetch('https://csrng.net/csrng/csrng.php?min=2&max=3')
+          fetch('https://csrng.net/csrng/csrng.php?min=2&max=2')
             .then(res => res.json())
             .then(data => data[0].random + ' Years'),
         ]);
@@ -221,10 +221,10 @@ export default function Jobs() {
         // Set fallback random values if API fails
         setMetrics({
           jobs: {
-            totalPositions: Math.floor(Math.random() * 8) + 3,
-            developmentRoles: Math.floor(Math.random() * 4) + 1,
-            cloudDevOpsRoles: Math.floor(Math.random() * 4) + 1,
-            experienceLevel: Math.floor(Math.random() * 2) + 2 + ' Years',
+            totalPositions: Math.floor(Math.random() * 0) + 3,
+            developmentRoles: Math.floor(Math.random() * 0) + 1,
+            cloudDevOpsRoles: Math.floor(Math.random() * 0) + 2,
+            experienceLevel: Math.floor(Math.random() * 0) + '1 - 02' + ' Years',
           }
         });
       }
