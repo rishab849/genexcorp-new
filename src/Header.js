@@ -48,7 +48,12 @@ export default function Header({ onNavigate, handleLogoClick, currentPage }) {
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-8 text-xs sm:text-sm text-gray-500">
           {/* Home with dropdown */}
           <div className={`relative group flex items-center space-x-1 ${isHomeActive ? 'text-red-500' : 'hover:text-red-500'} transition-colors cursor-pointer`}>
-            <span>Home</span>
+            <button
+              onClick={() => onNavigate('home')} // Navigate to home page on click
+              className="focus:outline-none"
+            >
+              Home
+            </button>
             <ChevronDown className="h-3 w-3" />
             {/* Dropdown Menu */}
             <div className="absolute left-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transform -translate-y-2 transition-all duration-200 z-50">
@@ -153,6 +158,7 @@ export default function Header({ onNavigate, handleLogoClick, currentPage }) {
             {/* Home Dropdown */}
             <div className="relative">
               <button
+                onClick={() => onNavigate('home')} // Navigate to home page on click
                 className={`w-full text-left text-sm ${isHomeActive ? 'text-red-500' : 'text-gray-500'} hover:text-red-500 flex items-center justify-between px-4 py-2`}
               >
                 Home
