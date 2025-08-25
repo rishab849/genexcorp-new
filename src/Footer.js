@@ -19,66 +19,68 @@ export default function Footer({ onNavigate }) {
         </div>
 
         {/* GenexCorp Quick Links */}
-        <div className="text-center">
-          <h3 className="text-base sm:text-lg text-gray-900 mb-3 sm:mb-4">GenexCorp Quick Links</h3>
-          <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
-            <li>
-              <button 
-                onClick={() => onNavigate('home')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('objective')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Our Objective
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('portfolio')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Portfolio
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('corporatetraining')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Corporate Training
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('training')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Career Augmentation Training
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('jobs')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Jobs
-              </button>
-            </li>
-            <li>
-              <button 
-                onClick={() => onNavigate('support')} 
-                className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
-              >
-                Support
-              </button>
-            </li>
-          </ul>
+        <div className="flex justify-center">
+          <div className="text-left">
+            <h3 className="text-base sm:text-lg text-gray-900 mb-3 sm:mb-4">GenexCorp Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+              <li>
+                <button 
+                  onClick={() => onNavigate('home')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('objective')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Our Objective
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('portfolio')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('corporatetraining')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Corporate Training
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('training')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Career Augmentation Training
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('jobs')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Jobs
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('support')} 
+                  className="text-gray-600 hover:text-red-500 transition-all duration-200 inline-block"
+                >
+                  Support
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Contact Information */}
